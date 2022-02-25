@@ -12,7 +12,7 @@ import 'package:presensiblebeacon/MODEL/Presensi/ListKelasDosenModel.dart';
 // import 'package:presensiblebeacon/Utils/extension_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 
 class DosenPresensiDashboardPage extends StatefulWidget {
   @override
@@ -56,14 +56,14 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
 
     // ruangBeaconResponseModel = RuangBeaconResponseModel();
 
-    _timeString = _formatTime(DateTime.now());
-    _dateString = _formatDate(DateTime.now());
+    // _timeString = _formatTime(DateTime.now());
+    // _dateString = _formatDate(DateTime.now());
 
     // _timeStringFilter = _formatTime(DateTime.now());
     // _dateStringFilter = _formatDate(DateTime.now());
 
-    Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
-    Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
+    // Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    // Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
 
     // getDataRuangBeacon();
 
@@ -86,31 +86,31 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
     });
   }
 
-  void _getTime() {
-    final DateTime now = DateTime.now();
-    final String formattedTime = _formatTime(now);
+  // void _getTime() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedTime = _formatTime(now);
 
-    setState(() {
-      _timeString = formattedTime;
-    });
-  }
+  //   setState(() {
+  //     _timeString = formattedTime;
+  //   });
+  // }
 
-  void _getDate() {
-    final DateTime now = DateTime.now();
-    final String formattedDate = _formatDate(now);
+  // void _getDate() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedDate = _formatDate(now);
 
-    setState(() {
-      _dateString = formattedDate;
-    });
-  }
+  //   setState(() {
+  //     _dateString = formattedDate;
+  //   });
+  // }
 
-  String _formatDate(DateTime dateTime) {
-    return DateFormat('d MMMM y').format(dateTime);
-  }
+  // String _formatDate(DateTime dateTime) {
+  //   return DateFormat('d MMMM y').format(dateTime);
+  // }
 
-  String _formatTime(DateTime dateTime) {
-    return DateFormat('HH:mm:ss').format(dateTime);
-  }
+  // String _formatTime(DateTime dateTime) {
+  //   return DateFormat('HH:mm:ss').format(dateTime);
+  // }
 
   void getDataDosen() async {
     SharedPreferences loginDosen = await SharedPreferences.getInstance();
@@ -121,7 +121,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
   }
 
   void getDataListKelasDosen() async {
-    setState(() {
+    // setState(() {
       listKelasDosenRequestModel.npp = npp;
 
       print(listKelasDosenRequestModel.toJson());
@@ -134,7 +134,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
 
         matakuliahListSearch = value.data;
       });
-    });
+    // });
   }
 
   @override
@@ -162,7 +162,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                         textColor: Colors.white,
                         fontSize: 14.0)
                   }),
-          backgroundColor: Colors.grey[200],
+          backgroundColor: Colors.grey[50],
           appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: 0,
@@ -188,7 +188,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
             //   height: 30,
             // ),'
             title: Text(
-              'Kuliah Saat Ini',
+              'Presensi',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'OpenSans',
@@ -277,7 +277,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
               //           _dateString,
               //           style: TextStyle(
               //               fontSize: 16,
-              //               fontFamily: 'WorkSansMedium',
+              //               fontFamily: 'OpenSans',
               //               color: Colors.white),
               //         ),
               //       ),
@@ -286,7 +286,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
               //           _timeString,
               //           style: TextStyle(
               //               fontSize: 25,
-              //               fontFamily: 'WorkSansMedium',
+              //               fontFamily: 'OpenSans',
               //               color: Colors.white),
               //         ),
               //       ),
@@ -336,7 +336,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
               //           disabledBorder: InputBorder.none,
               //         ),
               //         style: const TextStyle(
-              //             fontFamily: 'WorkSansSemiBold',
+              //             fontFamily: 'OpenSans',
               //             fontSize: 16.0,
               //             color: Colors.black),
               //         onChanged: (text) {
@@ -355,29 +355,29 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
               //     ),
               //   ),
               // ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      _dateString,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          fontFamily: 'OpenSans',
-                          color: Colors.black),
-                    ),
-                    Text(
-                      _timeString,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
-                          fontFamily: 'OpenSans',
-                          color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Column(
+              //     children: [
+              //       Text(
+              //         _dateString,
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 18,
+              //             fontFamily: 'OpenSans',
+              //             color: Colors.black),
+              //       ),
+              //       Text(
+              //         _timeString,
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 26,
+              //             fontFamily: 'OpenSans',
+              //             color: Colors.black),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               listKelasDosenResponseModel.data == null
                   ? Center(
                       child: Padding(
@@ -432,7 +432,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                   //   'Silakan tekan tombol "Segarkan" jika bermasalah',
                                   //   style: TextStyle(
                                   //       fontSize: 14,
-                                  //       fontFamily: 'WorkSansMedium',
+                                  //       fontFamily: 'OpenSans',
                                   //       fontWeight: FontWeight.bold,
                                   //       color: Colors.white),
                                   // ),
@@ -511,7 +511,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                           fontSize:
                                                                               18,
                                                                           fontFamily:
-                                                                              'WorkSansMedium',
+                                                                              'OpenSans',
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
@@ -560,7 +560,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                           fontSize:
                                                                               18,
                                                                           fontFamily:
-                                                                              'WorkSansMedium',
+                                                                              'OpenSans',
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
@@ -587,7 +587,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                               '${listKelasDosenResponseModel.data[index].namamk} ${listKelasDosenResponseModel.data[index].kelas}',
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -610,7 +610,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontFamily:
-                                                              'WorkSansMedium',
+                                                              'OpenSans',
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -639,7 +639,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -672,7 +672,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -691,7 +691,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //     'SKS : ${listKelasDosenResponseModel.data[index].sks}',
                                                 //     style: TextStyle(
                                                 //       fontSize: 15,
-                                                //       fontFamily: 'WorkSansMedium',
+                                                //       fontFamily: 'OpenSans',
                                                 //       fontWeight: FontWeight.bold,
                                                 //     ),
                                                 //   ),
@@ -703,7 +703,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //     'Hari : ${listKelasDosenResponseModel.data[index].hari1}',
                                                 //     style: TextStyle(
                                                 //       fontSize: 15,
-                                                //       fontFamily: 'WorkSansMedium',
+                                                //       fontFamily: 'OpenSans',
                                                 //       fontWeight: FontWeight.bold,
                                                 //     ),
                                                 //   ),
@@ -715,7 +715,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //     'Sesi : ${listKelasDosenResponseModel.data[index].sesi1}',
                                                 //     style: TextStyle(
                                                 //       fontSize: 15,
-                                                //       fontFamily: 'WorkSansMedium',
+                                                //       fontFamily: 'OpenSans',
                                                 //       fontWeight: FontWeight.bold,
                                                 //     ),
                                                 //   ),
@@ -741,7 +741,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -789,7 +789,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                       fontSize:
                                                                           14,
                                                                       fontFamily:
-                                                                          'WorkSansMedium',
+                                                                          'OpenSans',
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -828,7 +828,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                     'Presensi Masuk',
                                                                     style: const TextStyle(
                                                                         fontFamily:
-                                                                            'WorkSansSemiBold',
+                                                                            'OpenSans',
                                                                         fontSize:
                                                                             16,
                                                                         color: Colors
@@ -1158,7 +1158,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                     fontSize:
                                                                         14,
                                                                     fontFamily:
-                                                                        'WorkSansMedium',
+                                                                        'OpenSans',
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -1198,7 +1198,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                     'Presensi Keluar',
                                                                     style: const TextStyle(
                                                                         fontFamily:
-                                                                            'WorkSansSemiBold',
+                                                                            'OpenSans',
                                                                         fontSize:
                                                                             16,
                                                                         color: Colors
@@ -1562,7 +1562,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                                     fontSize:
                                                                         18,
                                                                     fontFamily:
-                                                                        'WorkSansMedium',
+                                                                        'OpenSans',
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -1591,7 +1591,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                               '${listKelasDosenResponseModel.data[index].namamk} ${listKelasDosenResponseModel.data[index].kelas}',
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1614,7 +1614,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontFamily:
-                                                              'WorkSansMedium',
+                                                              'OpenSans',
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1643,7 +1643,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1676,7 +1676,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1695,7 +1695,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //     'SKS : ${listKelasDosenResponseModel.data[index].sks}',
                                                 //     style: TextStyle(
                                                 //       fontSize: 15,
-                                                //       fontFamily: 'WorkSansMedium',
+                                                //       fontFamily: 'OpenSans',
                                                 //       fontWeight: FontWeight.bold,
                                                 //     ),
                                                 //   ),
@@ -1707,7 +1707,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //     'Hari : ${listKelasDosenResponseModel.data[index].hari1}',
                                                 //     style: TextStyle(
                                                 //       fontSize: 15,
-                                                //       fontFamily: 'WorkSansMedium',
+                                                //       fontFamily: 'OpenSans',
                                                 //       fontWeight: FontWeight.bold,
                                                 //     ),
                                                 //   ),
@@ -1719,7 +1719,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //     'Sesi : ${listKelasDosenResponseModel.data[index].sesi1}',
                                                 //     style: TextStyle(
                                                 //       fontSize: 15,
-                                                //       fontFamily: 'WorkSansMedium',
+                                                //       fontFamily: 'OpenSans',
                                                 //       fontWeight: FontWeight.bold,
                                                 //     ),
                                                 //   ),
@@ -1745,7 +1745,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1781,7 +1781,7 @@ class _DosenPresensiDashboardPageState extends State<DosenPresensiDashboardPage>
                                                 //         style: TextStyle(
                                                 //           fontSize: 16,
                                                 //           fontFamily:
-                                                //               'WorkSansMedium',
+                                                //               'OpenSans',
                                                 //           fontWeight:
                                                 //               FontWeight.bold,
                                                 //           color: Colors.white,

@@ -4,7 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:presensiblebeacon/API/APIService.dart';
 import 'package:presensiblebeacon/MODEL/Mahasiswa/RiwayatMahasiswaModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,12 +19,12 @@ class MahasiswaRiwayatDashboardPage extends StatefulWidget {
 
 class _MahasiswaRiwayatDashboardPageState
     extends State<MahasiswaRiwayatDashboardPage> {
-  String _timeString;
-  String _dateString;
+  // String _timeString;
+  // String _dateString;
 
   String npm = "";
 
-  DateTime timeNow = DateTime.now();
+  // DateTime timeNow = DateTime.now();
 
   RiwayatMahasiswaRequestModel riwayatMahasiswaRequestModel;
 
@@ -36,11 +36,11 @@ class _MahasiswaRiwayatDashboardPageState
     riwayatMahasiswaRequestModel = RiwayatMahasiswaRequestModel();
     riwayatMahasiswaResponseModel = RiwayatMahasiswaResponseModel();
 
-    _timeString = _formatTime(DateTime.now());
-    _dateString = _formatDate(DateTime.now());
+    // _timeString = _formatTime(DateTime.now());
+    // _dateString = _formatDate(DateTime.now());
 
-    Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
-    Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
+    // Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    // Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
 
     Timer.periodic(Duration(seconds: 2), (Timer t) {
       // getDataMahasiswa();
@@ -59,52 +59,58 @@ class _MahasiswaRiwayatDashboardPageState
   }
 
   void getDataRiwayatMahasiswa() async {
-    setState(() {
-      riwayatMahasiswaRequestModel.npm = npm;
+    // setState(() {
+    riwayatMahasiswaRequestModel.npm = npm;
 
-      print(riwayatMahasiswaRequestModel.toJson());
-      APIService apiService = new APIService();
-      apiService
-          .postRiwayatMahasiswa(riwayatMahasiswaRequestModel)
-          .then((value) async {
-        riwayatMahasiswaResponseModel = value;
-      });
+    print(riwayatMahasiswaRequestModel.toJson());
+    APIService apiService = new APIService();
+    apiService
+        .postRiwayatMahasiswa(riwayatMahasiswaRequestModel)
+        .then((value) async {
+      riwayatMahasiswaResponseModel = value;
     });
+    // });
   }
 
-  void _getTime() {
-    final DateTime now = DateTime.now();
-    final String formattedTime = _formatTime(now);
+  // void _getTime() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedTime = _formatTime(now);
 
-    setState(() {
-      _timeString = formattedTime;
-    });
-  }
+  //   setState(() {
+  //     _timeString = formattedTime;
+  //   });
+  // }
 
-  void _getDate() {
-    final DateTime now = DateTime.now();
-    final String formattedDate = _formatDate(now);
+  // void _getDate() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedDate = _formatDate(now);
 
-    setState(() {
-      _dateString = formattedDate;
-    });
-  }
+  //   setState(() {
+  //     _dateString = formattedDate;
+  //   });
+  // }
 
-  String _formatDate(DateTime dateTime) {
-    return DateFormat('d MMMM y').format(dateTime);
-  }
+  // String _formatDate(DateTime dateTime) {
+  //   return DateFormat('d MMMM y').format(dateTime);
+  // }
 
-  String _formatTime(DateTime dateTime) {
-    return DateFormat('HH:mm:ss').format(dateTime);
-  }
+  // String _formatTime(DateTime dateTime) {
+  //   return DateFormat('HH:mm:ss').format(dateTime);
+  // }
 
   @override
   Widget build(BuildContext context) {
     getDataMahasiswa();
     // getDataRiwayatMahasiswa();
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.refresh_rounded),
+      floatingActionButton: FloatingActionButton.extended(
+          label: Text('Segarkan',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans',
+                  color: Colors.black)),
+          backgroundColor: Colors.blue[200],
+          icon: Icon(Icons.refresh_rounded, color: Colors.black),
           onPressed: () => {
                 getDataRiwayatMahasiswa(),
                 Fluttertoast.showToast(
@@ -116,17 +122,23 @@ class _MahasiswaRiwayatDashboardPageState
                     textColor: Colors.white,
                     fontSize: 14.0)
               }),
-      backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
+        leading: IconButton(
+            icon: Icon(Icons.menu, color: Colors.black),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            }),
         centerTitle: true,
         title: Text(
-          'Riwayat Presensi Kuliah',
+          'Riwayat Presensi',
           style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'WorkSansMedium',
-              fontWeight: FontWeight.bold),
+            color: Colors.black,
+            fontFamily: 'OpenSans',
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           FutureBuilder(
@@ -164,50 +176,52 @@ class _MahasiswaRiwayatDashboardPageState
       ),
       body: Column(
         children: <Widget>[
-          Center(
-            child: Column(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    _dateString,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'WorkSansMedium',
-                        color: Colors.white),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    _timeString,
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontFamily: 'WorkSansMedium',
-                        color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Center(
+          //   child: Column(
+          //     children: <Widget>[
+          //       Center(
+          //         child: Text(
+          //           _dateString,
+          //           style: TextStyle(
+          //               fontSize: 16,
+          //               fontFamily: 'OpenSans',
+          //               color: Colors.white),
+          //         ),
+          //       ),
+          //       Center(
+          //         child: Text(
+          //           _timeString,
+          //           style: TextStyle(
+          //               fontSize: 25,
+          //               fontFamily: 'OpenSans',
+          //               color: Colors.white),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           riwayatMahasiswaResponseModel.data == null
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Mohon Tunggu..',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontFamily: 'WorkSansMedium',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ],
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Column(
+                      children: [
+                        CircularProgressIndicator(
+                          color: Colors.black,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Mohon Tunggu..',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'OpenSans',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               : riwayatMahasiswaResponseModel.data.isEmpty
@@ -223,12 +237,12 @@ class _MahasiswaRiwayatDashboardPageState
                                     color: Colors.red,
                                     borderRadius: BorderRadius.circular(25)),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(4.0),
                                   child: Text(
                                     'Riwayat presensi anda kosong',
                                     style: TextStyle(
                                         fontSize: 18,
-                                        fontFamily: 'WorkSansMedium',
+                                        fontFamily: 'OpenSans',
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -239,7 +253,7 @@ class _MahasiswaRiwayatDashboardPageState
                               //   'Silakan tekan tombol "Segarkan" jika bermasalah',
                               //   style: TextStyle(
                               //       fontSize: 14,
-                              //       fontFamily: 'WorkSansMedium',
+                              //       fontFamily: 'OpenSans',
                               //       fontWeight: FontWeight.bold,
                               //       color: Colors.white),
                               // ),
@@ -259,42 +273,32 @@ class _MahasiswaRiwayatDashboardPageState
                                     left: 12, right: 12, top: 8, bottom: 8),
                                 child: Container(
                                   decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey[500],
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.75,
+                                            spreadRadius: 0.25)
+                                      ],
                                       color: Colors.grey[200],
                                       borderRadius: BorderRadius.circular(25)),
                                   child: new ListTile(
                                     title: Column(
                                       children: <Widget>[
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                    color: Colors.red,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25)),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    '${riwayatMahasiswaResponseModel.data[index].hari1}, ${riwayatMahasiswaResponseModel.data[index].tglmasuk}',
-                                                    style: TextStyle(
-                                                      color: Colors.grey[50],
-                                                      fontSize: 14,
-                                                      fontFamily:
-                                                          'WorkSansMedium',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: Text(
+                                              '${riwayatMahasiswaResponseModel.data[index].hari1}, ${riwayatMahasiswaResponseModel.data[index].tglmasuk}',
+                                              style: TextStyle(
+                                                color: Colors.blue[500],
+                                                fontSize: 14,
+                                                fontFamily: 'OpenSans',
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
                                         Scrollbar(
                                           child: Center(
@@ -309,13 +313,13 @@ class _MahasiswaRiwayatDashboardPageState
                                                         Padding(
                                                           padding:
                                                               const EdgeInsets
-                                                                  .all(8.0),
+                                                                  .all(4.0),
                                                           child: new Text(
                                                             '${riwayatMahasiswaResponseModel.data[index].namamk} ${riwayatMahasiswaResponseModel.data[index].kelas}',
                                                             style: TextStyle(
                                                                 fontSize: 15,
                                                                 fontFamily:
-                                                                    'WorkSansMedium',
+                                                                    'OpenSans',
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold),
@@ -332,16 +336,54 @@ class _MahasiswaRiwayatDashboardPageState
                                         new Text(
                                           'Pertemuan ke - ${riwayatMahasiswaResponseModel.data[index].pertemuan}',
                                           style: TextStyle(
+                                            color: Colors.grey[600],
                                             fontSize: 14,
-                                            fontFamily: 'WorkSansMedium',
+                                            fontFamily: 'OpenSans',
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
+                                        riwayatMahasiswaResponseModel
+                                                    .data[index].status ==
+                                                'H'
+                                            ? Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: new Text(
+                                                  'Status : ${riwayatMahasiswaResponseModel.data[index].status ?? "-"}',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontFamily: 'OpenSans',
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.green,
+                                                  ),
+                                                ),
+                                              )
+                                            : Container(
+                                                decoration: BoxDecoration(
+                                                    color: Colors.red,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    'Status : ${riwayatMahasiswaResponseModel.data[index].status ?? "-"}',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: 'OpenSans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                         ExpansionTile(
                                           title: Text(
-                                            'Lihat lebih detail',
+                                            'Detail',
                                             style: TextStyle(
-                                                fontFamily: 'WorkSansMedium',
+                                                fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14),
                                           ),
@@ -355,12 +397,12 @@ class _MahasiswaRiwayatDashboardPageState
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.all(
-                                                              8.0),
+                                                              4.0),
                                                       child: Text(
                                                         'Dosen Pengampu : ${riwayatMahasiswaResponseModel.data[index].namadosen1}',
                                                         style: TextStyle(
                                                             fontFamily:
-                                                                'WorkSansMedium',
+                                                                'OpenSans',
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontSize: 14),
@@ -374,12 +416,11 @@ class _MahasiswaRiwayatDashboardPageState
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(4.0),
                                                   child: Text(
                                                     'Ruang : ${riwayatMahasiswaResponseModel.data[index].ruang}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -391,12 +432,11 @@ class _MahasiswaRiwayatDashboardPageState
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(4.0),
                                                   child: Text(
                                                     'SKS : ${riwayatMahasiswaResponseModel.data[index].sks}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -408,12 +448,11 @@ class _MahasiswaRiwayatDashboardPageState
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(4.0),
                                                   child: Text(
                                                     'Sesi : ${riwayatMahasiswaResponseModel.data[index].sesi1}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -425,12 +464,11 @@ class _MahasiswaRiwayatDashboardPageState
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(4.0),
                                                   child: Text(
                                                     'Mahasiswa Masuk : ${riwayatMahasiswaResponseModel.data[index].jammasukdosen ?? "-"}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -442,12 +480,11 @@ class _MahasiswaRiwayatDashboardPageState
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(4.0),
                                                   child: Text(
                                                     'Mahasiswa Keluar : ${riwayatMahasiswaResponseModel.data[index].jamkeluardosen ?? "-"}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -457,53 +494,6 @@ class _MahasiswaRiwayatDashboardPageState
                                             ),
                                           ],
                                         ),
-                                        riwayatMahasiswaResponseModel
-                                                    .data[index].status ==
-                                                'H'
-                                            ? Container(
-                                                decoration: BoxDecoration(
-                                                    color: Colors.green,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25)),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: new Text(
-                                                    'Status : ${riwayatMahasiswaResponseModel.data[index].status ?? "-"}',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontFamily:
-                                                          'WorkSansMedium',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
-                                            : Container(
-                                                decoration: BoxDecoration(
-                                                    color: Colors.red,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25)),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: new Text(
-                                                    'Status : ${riwayatMahasiswaResponseModel.data[index].status ?? "-"}',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontFamily:
-                                                          'WorkSansMedium',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
                                       ],
                                     ),
                                     onTap: () async {

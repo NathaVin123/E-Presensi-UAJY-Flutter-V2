@@ -52,11 +52,12 @@ class _LoginAdminState extends State<LoginAdmin> {
   Widget buildLoginAdmin(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          foregroundColor: Colors.black,
           // centerTitle: true,
           // title: Text(
           //   'ADMIN',
           //   style: TextStyle(
-          //       fontWeight: FontWeight.bold, fontFamily: 'WorkSansMedium'),
+          //       fontWeight: FontWeight.bold, fontFamily: 'OpenSans'),
           // ),
           actions: <Widget>[
             FutureBuilder(
@@ -91,26 +92,33 @@ class _LoginAdminState extends State<LoginAdmin> {
               },
             )
           ],
-          backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+          backgroundColor: Colors.grey[50],
           elevation: 0,
         ),
         body: SingleChildScrollView(
           child: Container(
-              decoration: BoxDecoration(color: Color.fromRGBO(23, 75, 137, 1)),
+              decoration: BoxDecoration(color: Colors.grey[50]),
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.app_settings_alt_rounded,
-                      size: MediaQuery.of(context).size.height > 800
-                          ? 150.0
-                          : MediaQuery.of(context).size.height > 400
-                              ? 150
-                              : MediaQuery.of(context).size.height > 200
-                                  ? 75
-                                  : 0,
-                      color: Colors.white,
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.blue[800],
+                      radius: 75,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.app_settings_alt_rounded,
+                          size: MediaQuery.of(context).size.height > 800
+                              ? 100.0
+                              : MediaQuery.of(context).size.height > 400
+                                  ? 100
+                                  : MediaQuery.of(context).size.height > 200
+                                      ? 75
+                                      : 0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                   // Image(
@@ -121,14 +129,22 @@ class _LoginAdminState extends State<LoginAdmin> {
                   //     image: const AssetImage(
                   //         'assets/png/SplashPage_LogoAtmaJaya.png')),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text('ADMIN',
-                          style: const TextStyle(
-                              fontFamily: 'WorkSansMedium',
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
+                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.blue[500],
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text('ADMIN',
+                              style: const TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -177,8 +193,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                                                 textInputAction:
                                                     TextInputAction.next,
                                                 style: const TextStyle(
-                                                    fontFamily:
-                                                        'WorkSansSemiBold',
+                                                    fontFamily: 'OpenSans',
                                                     fontSize: 18.0,
                                                     color: Colors.black),
                                                 keyboardType:
@@ -194,7 +209,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                                                 decoration: new InputDecoration(
                                                   contentPadding:
                                                       EdgeInsets.all(20.0),
-                                                  hintText: "NPP KARYAWAN",
+                                                  hintText: "NPP",
                                                   enabledBorder:
                                                       UnderlineInputBorder(
                                                           borderSide:
@@ -227,8 +242,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                                                 textInputAction:
                                                     TextInputAction.next,
                                                 style: const TextStyle(
-                                                    fontFamily:
-                                                        'WorkSansSemiBold',
+                                                    fontFamily: 'OpenSans',
                                                     fontSize: 18.0,
                                                     color: Colors.black),
                                                 keyboardType:
@@ -276,7 +290,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                                           _passwordAdminFieldFocus.unfocus();
                                         },
                                         style: const TextStyle(
-                                            fontFamily: 'WorkSansSemiBold',
+                                            fontFamily: 'OpenSans',
                                             fontSize: 18.0,
                                             color: Colors.black),
                                         keyboardType: TextInputType.text,
@@ -289,7 +303,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                                         obscureText: hidePassword,
                                         decoration: new InputDecoration(
                                           contentPadding: EdgeInsets.all(20.0),
-                                          hintText: "PASSWORD",
+                                          hintText: "Password",
                                           enabledBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                   color: Colors.grey)),
@@ -334,17 +348,16 @@ class _LoginAdminState extends State<LoginAdmin> {
                                                 width: 10,
                                               ),
                                               Text(
-                                                "MASUK",
+                                                "Masuk",
                                                 style: const TextStyle(
-                                                    fontFamily:
-                                                        'WorkSansSemiBold',
+                                                    fontFamily: 'OpenSans',
                                                     fontSize: 18.0,
                                                     color: Colors.white),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        color: Color.fromRGBO(247, 180, 7, 1),
+                                        color: Colors.blue[500],
                                         shape: StadiumBorder(),
                                         onPressed: () {
                                           FocusScope.of(context).unfocus();
@@ -362,9 +375,9 @@ class _LoginAdminState extends State<LoginAdmin> {
                                               Future.delayed(
                                                   Duration(seconds: 5),
                                                   () async {
-                                                setState(() {
+                                                // setState(() {
                                                   isApiCallProcess = false;
-                                                });
+                                                // });
 
                                                 Fluttertoast.showToast(
                                                     msg:
@@ -463,17 +476,18 @@ class _LoginAdminState extends State<LoginAdmin> {
                                   child: Text(
                                 'Silahkan login dengan akun simka.',
                                 style: TextStyle(
+                                    fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: Colors.white,
-                                    fontFamily: 'WorkSansMedium'),
+                                    color: Colors.black,
+                                    fontFamily: 'OpenSans'),
                               )),
                             ),
-                            SizedBox(
-                              height: 700,
-                            )
                           ],
                         ),
-                      ))
+                      )),
+                  SizedBox(
+                    height: 350,
+                  ),
                 ],
               )),
         ));

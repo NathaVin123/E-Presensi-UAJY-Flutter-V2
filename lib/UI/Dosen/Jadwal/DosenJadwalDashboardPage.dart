@@ -58,15 +58,15 @@ class _DosenJadwalDashboardPageState extends State<DosenJadwalDashboardPage> {
   }
 
   void getDataJadwalDosen() async {
-    setState(() {
-      jadwalDosenRequestModel.npp = npp;
+    // setState(() {
+    jadwalDosenRequestModel.npp = npp;
 
-      print(jadwalDosenRequestModel.toJson());
-      APIService apiService = new APIService();
-      apiService.postJadwalDosen(jadwalDosenRequestModel).then((value) async {
-        jadwalDosenResponseModel = value;
-      });
+    print(jadwalDosenRequestModel.toJson());
+    APIService apiService = new APIService();
+    apiService.postJadwalDosen(jadwalDosenRequestModel).then((value) async {
+      jadwalDosenResponseModel = value;
     });
+    // });
   }
 
   // void _getTime() {
@@ -118,7 +118,7 @@ class _DosenJadwalDashboardPageState extends State<DosenJadwalDashboardPage> {
                     textColor: Colors.white,
                     fontSize: 14.0)
               }),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.blue[100],
@@ -292,7 +292,7 @@ class _DosenJadwalDashboardPageState extends State<DosenJadwalDashboardPage> {
                                     left: 12, right: 12, top: 8, bottom: 8),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.grey[200],
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(25)),
                                   child: new ListTile(
                                     title: Column(

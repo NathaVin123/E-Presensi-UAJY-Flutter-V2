@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 import 'package:presensiblebeacon/API/APIService.dart';
 import 'package:presensiblebeacon/MODEL/Beacon/RuangBeaconModel.dart';
 import 'package:presensiblebeacon/MODEL/Presensi/ListKelasMahasiswa.dart';
-import 'package:presensiblebeacon/Utils/extension_image.dart';
+// import 'package:presensiblebeacon/Utils/extension_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 
 class MahasiswaPresensiDashboardPage extends StatefulWidget {
   @override
@@ -47,11 +47,11 @@ class _MahasiswaPresensiDashboardPageState
 
     super.initState();
 
-    _timeString = _formatTime(DateTime.now());
-    _dateString = _formatDate(DateTime.now());
+    // _timeString = _formatTime(DateTime.now());
+    // _dateString = _formatDate(DateTime.now());
 
-    Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
-    Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
+    // Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    // Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
 
     listKelasMahasiswaRequestModel = ListKelasMahasiswaRequestModel();
     listKelasMahasiswaResponseModel = ListKelasMahasiswaResponseModel();
@@ -85,31 +85,31 @@ class _MahasiswaPresensiDashboardPageState
     // });
   }
 
-  void _getTime() {
-    final DateTime now = DateTime.now();
-    final String formattedTime = _formatTime(now);
+  // void _getTime() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedTime = _formatTime(now);
 
-    setState(() {
-      _timeString = formattedTime;
-    });
-  }
+  //   setState(() {
+  //     _timeString = formattedTime;
+  //   });
+  // }
 
-  void _getDate() {
-    final DateTime now = DateTime.now();
-    final String formattedDate = _formatDate(now);
+  // void _getDate() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedDate = _formatDate(now);
 
-    setState(() {
-      _dateString = formattedDate;
-    });
-  }
+  //   setState(() {
+  //     _dateString = formattedDate;
+  //   });
+  // }
 
-  String _formatDate(DateTime dateTime) {
-    return DateFormat('d MMMM y').format(dateTime);
-  }
+  // String _formatDate(DateTime dateTime) {
+  //   return DateFormat('d MMMM y').format(dateTime);
+  // }
 
-  String _formatTime(DateTime dateTime) {
-    return DateFormat('HH:mm:ss').format(dateTime);
-  }
+  // String _formatTime(DateTime dateTime) {
+  //   return DateFormat('HH:mm:ss').format(dateTime);
+  // }
 
   void getDataMahasiswa() async {
     SharedPreferences loginMahasiswa = await SharedPreferences.getInstance();
@@ -120,7 +120,7 @@ class _MahasiswaPresensiDashboardPageState
   }
 
   void getDataListKelasMahasiswa() async {
-    setState(() {
+    // setState(() {
       listKelasMahasiswaRequestModel.npm = npm;
 
       // listKelasMahasiswaRequestModel.tglnow = _dateString + ' ' + _timeString;
@@ -133,7 +133,7 @@ class _MahasiswaPresensiDashboardPageState
           .then((value) async {
         listKelasMahasiswaResponseModel = value;
       });
-    });
+    // });
   }
 
   // getDetailKelas() async {
@@ -153,8 +153,17 @@ class _MahasiswaPresensiDashboardPageState
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.refresh_rounded),
+          floatingActionButton: FloatingActionButton.extended(
+              backgroundColor: Colors.blue[200],
+              label: Text('Segarkan',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'OpenSans',
+                      color: Colors.black)),
+              icon: Icon(
+                Icons.refresh_rounded,
+                color: Colors.black,
+              ),
               onPressed: () => {
                     getDataListKelasMahasiswa(),
                     Fluttertoast.showToast(
@@ -166,11 +175,11 @@ class _MahasiswaPresensiDashboardPageState
                         textColor: Colors.white,
                         fontSize: 14.0)
                   }),
-          backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+          backgroundColor: Colors.grey[200],
           appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: 0,
-            backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+            backgroundColor: Colors.blue[100],
             // leading: IconButton(
             //     icon: Icon(
             //       Icons.list_rounded,
@@ -180,10 +189,22 @@ class _MahasiswaPresensiDashboardPageState
             //     //     Get.toNamed('')
             //     onPressed: () =>
             //         Get.toNamed('/mahasiswa/dashboard/presensi/detail/list')),
-            title: Image.asset(
-              'SplashPage_LogoAtmaJaya_3'.png,
-              height: 30,
+            // title: Image.asset(
+            //   'SplashPage_LogoAtmaJaya_3'.png,
+            //   height: 30,
+            // ),
+            title: Text(
+              'Presensi',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans',
+                  color: Colors.black),
             ),
+            leading: IconButton(
+                icon: Icon(Icons.menu, color: Colors.black),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                }),
             centerTitle: true,
             actions: [
               FutureBuilder(
@@ -221,105 +242,107 @@ class _MahasiswaPresensiDashboardPageState
           ),
           body: Column(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 10, bottom: 10),
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        _dateString,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'WorkSansMedium',
-                            color: Colors.white),
-                      ),
-                    ),
-                    Center(
-                      // alignment: Alignment.centerLeft,
-                      child: Text(
-                        _timeString,
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'WorkSansMedium',
-                            color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 10, bottom: 10),
-                child: Column(
-                  children: <Widget>[
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: Center(
-                          child: Container(
-                            child: Scrollbar(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Text(
-                                    '${namamhs ?? "-"}',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: 'WorkSansMedium',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )),
-                  ],
-                ),
-              ),
-              Divider(
-                height: 20,
-                thickness: 5,
-                color: Colors.white,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 25, top: 10, bottom: 5),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Center(
-                    child: Text(
-                      'Kuliah Saat Ini',
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'WorkSansMedium',
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //       left: 20, right: 20, top: 10, bottom: 10),
+              //   child: Column(
+              //     children: [
+              //       Center(
+              //         child: Text(
+              //           _dateString,
+              //           style: TextStyle(
+              //               fontSize: 16,
+              //               fontFamily: 'OpenSans',
+              //               color: Colors.white),
+              //         ),
+              //       ),
+              //       Center(
+              //         // alignment: Alignment.centerLeft,
+              //         child: Text(
+              //           _timeString,
+              //           style: TextStyle(
+              //               fontSize: 30,
+              //               fontFamily: 'OpenSans',
+              //               color: Colors.white),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //       left: 20, right: 20, top: 10, bottom: 10),
+              //   child: Column(
+              //     children: <Widget>[
+              //       Align(
+              //           alignment: Alignment.centerLeft,
+              //           child: Center(
+              //             child: Container(
+              //               child: Scrollbar(
+              //                 child: Padding(
+              //                   padding: const EdgeInsets.all(8.0),
+              //                   child: SingleChildScrollView(
+              //                     scrollDirection: Axis.horizontal,
+              //                     child: Text(
+              //                       '${namamhs ?? "-"}',
+              //                       style: TextStyle(
+              //                           fontSize: 18,
+              //                           fontFamily: 'OpenSans',
+              //                           fontWeight: FontWeight.bold,
+              //                           color: Colors.white),
+              //                     ),
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //           )),
+              //     ],
+              //   ),
+              // ),
+              // Divider(
+              //   height: 20,
+              //   thickness: 5,
+              //   color: Colors.white,
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //       left: 20, right: 25, top: 10, bottom: 5),
+              //   child: Align(
+              //     alignment: Alignment.topLeft,
+              //     child: Center(
+              //       child: Text(
+              //         'Kuliah Saat Ini',
+              //         style: TextStyle(
+              //             fontSize: 22,
+              //             fontWeight: FontWeight.bold,
+              //             fontFamily: 'OpenSans',
+              //             color: Colors.white),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               listKelasMahasiswaResponseModel.data == null
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            'Mohon Tunggu..',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'WorkSansMedium',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ],
+                  ? Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            CircularProgressIndicator(
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              'Mohon Tunggu..',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'OpenSans',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   : listKelasMahasiswaResponseModel.data.isEmpty
@@ -341,7 +364,7 @@ class _MahasiswaPresensiDashboardPageState
                                         'Tidak ada kuliah saat ini',
                                         style: TextStyle(
                                             fontSize: 18,
-                                            fontFamily: 'WorkSansMedium',
+                                            fontFamily: 'OpenSans',
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white),
                                       ),
@@ -420,7 +443,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                           fontSize:
                                                                               18,
                                                                           fontFamily:
-                                                                              'WorkSansMedium',
+                                                                              'OpenSans',
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
@@ -469,7 +492,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                           fontSize:
                                                                               18,
                                                                           fontFamily:
-                                                                              'WorkSansMedium',
+                                                                              'OpenSans',
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
@@ -496,7 +519,7 @@ class _MahasiswaPresensiDashboardPageState
                                                               '${listKelasMahasiswaResponseModel.data[index].namamk} ${listKelasMahasiswaResponseModel.data[index].kelas}',
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -519,7 +542,7 @@ class _MahasiswaPresensiDashboardPageState
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontFamily:
-                                                              'WorkSansMedium',
+                                                              'OpenSans',
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -558,7 +581,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                       fontSize:
                                                                           14,
                                                                       fontFamily:
-                                                                          'WorkSansMedium',
+                                                                          'OpenSans',
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -594,7 +617,7 @@ class _MahasiswaPresensiDashboardPageState
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -626,7 +649,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -657,7 +680,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -729,7 +752,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                           Text(
                                                                             'Presensi Masuk',
                                                                             style: const TextStyle(
-                                                                                fontFamily: 'WorkSansSemiBold',
+                                                                                fontFamily: 'OpenSans',
                                                                                 fontSize: 18,
                                                                                 color: Colors.white),
                                                                           ),
@@ -1108,7 +1131,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                               ),
                                                                               Text(
                                                                                 'Presensi Keluar',
-                                                                                style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 18, color: Colors.white),
+                                                                                style: const TextStyle(fontFamily: 'OpenSans', fontSize: 18, color: Colors.white),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -1410,7 +1433,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                 //     'Jangan Log Out, ketika sudah presensi masuk',
                                                                 //     style: const TextStyle(
                                                                 //         fontFamily:
-                                                                //             'WorkSansSemiBold',
+                                                                //             'OpenSans',
                                                                 //         fontSize:
                                                                 //             10,
                                                                 //         color: Colors
@@ -1443,7 +1466,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                         'Sudah Presensi',
                                                                         style: const TextStyle(
                                                                             fontFamily:
-                                                                                'WorkSansSemiBold',
+                                                                                'OpenSans',
                                                                             fontSize:
                                                                                 18,
                                                                             color:
@@ -1457,7 +1480,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                 //   'Wajib Log Out, lalu Log In kembali jika status presensi tidak berubah',
                                                                 //   style: const TextStyle(
                                                                 //       fontFamily:
-                                                                //           'WorkSansSemiBold',
+                                                                //           'OpenSans',
                                                                 //       fontSize:
                                                                 //           10,
                                                                 //       color: Colors
@@ -1483,7 +1506,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           //                 child: Text(
                                                           //                   'Sudah Presensi',
                                                           //                   style: const TextStyle(
-                                                          //                       fontFamily: 'WorkSansSemiBold',
+                                                          //                       fontFamily: 'OpenSans',
                                                           //                       fontSize: 18,
                                                           //                       color: Colors.white),
                                                           //                 ),
@@ -1495,7 +1518,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           //             'Wajib Log Out, lalu Log In kembali jika status presensi tidak berubah',
                                                           //             style: const TextStyle(
                                                           //                 fontFamily:
-                                                          //                     'WorkSansSemiBold',
+                                                          //                     'OpenSans',
                                                           //                 fontSize:
                                                           //                     10,
                                                           //                 color:
@@ -1552,7 +1575,7 @@ class _MahasiswaPresensiDashboardPageState
                                                             style: TextStyle(
                                                                 fontSize: 18,
                                                                 fontFamily:
-                                                                    'WorkSansMedium',
+                                                                    'OpenSans',
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -1578,7 +1601,7 @@ class _MahasiswaPresensiDashboardPageState
                                                               '${listKelasMahasiswaResponseModel.data[index].namamk} ${listKelasMahasiswaResponseModel.data[index].kelas}',
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1601,7 +1624,7 @@ class _MahasiswaPresensiDashboardPageState
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontFamily:
-                                                              'WorkSansMedium',
+                                                              'OpenSans',
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1640,7 +1663,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                       fontSize:
                                                                           14,
                                                                       fontFamily:
-                                                                          'WorkSansMedium',
+                                                                          'OpenSans',
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -1676,7 +1699,7 @@ class _MahasiswaPresensiDashboardPageState
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1708,7 +1731,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1739,7 +1762,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1775,7 +1798,7 @@ class _MahasiswaPresensiDashboardPageState
                                                 //         style: TextStyle(
                                                 //           fontSize: 14,
                                                 //           fontFamily:
-                                                //               'WorkSansMedium',
+                                                //               'OpenSans',
                                                 //           fontWeight:
                                                 //               FontWeight.bold,
                                                 //           color: Colors.white,
@@ -1850,7 +1873,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                           fontSize:
                                                                               18,
                                                                           fontFamily:
-                                                                              'WorkSansMedium',
+                                                                              'OpenSans',
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
@@ -1899,7 +1922,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                           fontSize:
                                                                               18,
                                                                           fontFamily:
-                                                                              'WorkSansMedium',
+                                                                              'OpenSans',
                                                                           fontWeight: FontWeight
                                                                               .bold,
                                                                           color:
@@ -1926,7 +1949,7 @@ class _MahasiswaPresensiDashboardPageState
                                                               '${listKelasMahasiswaResponseModel.data[index].namamk} ${listKelasMahasiswaResponseModel.data[index].kelas}',
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1949,7 +1972,7 @@ class _MahasiswaPresensiDashboardPageState
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontFamily:
-                                                              'WorkSansMedium',
+                                                              'OpenSans',
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1989,7 +2012,7 @@ class _MahasiswaPresensiDashboardPageState
                                                                       fontSize:
                                                                           14,
                                                                       fontFamily:
-                                                                          'WorkSansMedium',
+                                                                          'OpenSans',
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -2025,7 +2048,7 @@ class _MahasiswaPresensiDashboardPageState
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -2057,7 +2080,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -2088,7 +2111,7 @@ class _MahasiswaPresensiDashboardPageState
                                                           style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -2126,7 +2149,7 @@ class _MahasiswaPresensiDashboardPageState
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontFamily:
-                                                              'WorkSansMedium',
+                                                              'OpenSans',
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           color: Colors.white,
@@ -2157,7 +2180,7 @@ class _MahasiswaPresensiDashboardPageState
                                   //             'Mohon tunggu dosen anda membuka kelas anda',
                                   //             style: TextStyle(
                                   //                 fontSize: 18,
-                                  //                 fontFamily: 'WorkSansMedium',
+                                  //                 fontFamily: 'OpenSans',
                                   //                 fontWeight: FontWeight.bold,
                                   //                 color: Colors.white),
                                   //           ),

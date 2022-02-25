@@ -49,16 +49,17 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
 
   Widget buildTambahBeacon(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.grey[50],
         appBar: AppBar(
+          foregroundColor: Colors.black,
           elevation: 0,
-          backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+          backgroundColor: Colors.blue[100],
           centerTitle: true,
           title: Text(
             'Tambah Beacon',
             style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'WorkSansMedium',
+                color: Colors.black,
+                fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -96,22 +97,28 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue[200],
           onPressed: () => Get.toNamed('/admin/menu/beacon/pindai'),
           label: Text('Pindai',
               style: const TextStyle(
-                  fontFamily: 'WorkSansSemiBold',
+                  fontFamily: 'OpenSans',
                   fontSize: 14.0,
-                  color: Colors.white)),
-          icon: Icon(Icons.search_rounded),
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
+          icon: Icon(Icons.search_rounded, color: Colors.black),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.grey[500],
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 0.75,
+                    spreadRadius: 0.25)
+              ], color: Colors.white, borderRadius: BorderRadius.circular(25)),
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -127,26 +134,26 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                           //     child: Text(
                           //       "Pindai Beacon",
                           //       style: const TextStyle(
-                          //           fontFamily: 'WorkSansSemiBold',
-                          //           fontSize: 18.0,
+                          //           fontFamily: 'OpenSans',
+                          //           fontSize: 14.0,
                           //           color: Colors.white),
                           //     ),
                           //     onPressed: () =>
                           //         Get.toNamed('/admin/menu/beacon/pindai')),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                               child: Text(
                                 'UUID',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                                 child: TextFormField(
                               controller: _uuidFieldController,
@@ -157,7 +164,7 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                               },
                               textInputAction: TextInputAction.next,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.text,
@@ -172,19 +179,19 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                             )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                               child: Text(
                                 'Nama Perangkat',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                                 child: TextFormField(
                               controller: _namaDeviceFieldController,
@@ -195,7 +202,7 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                               },
                               textInputAction: TextInputAction.next,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.text,
@@ -205,23 +212,23 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                                   ? "Tidak boleh kosong"
                                   : null,
                               decoration: new InputDecoration(
-                                  hintText: "Silahkan Isi Nama Perangkat"),
+                                  hintText: "Silahkan isi nama perangkat"),
                             )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                               child: Text(
                                 'Jarak Minimal',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                                 child: TextFormField(
                               controller: _jarakMinFieldController,
@@ -232,7 +239,7 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                               },
                               textInputAction: TextInputAction.next,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.number,
@@ -242,23 +249,23 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                                   ? "Tidak boleh kosong"
                                   : null,
                               decoration: new InputDecoration(
-                                  hintText: "Silahkan Isi Nilai Dalam Meter"),
+                                  hintText: "Silahkan isi nilai dalam meter"),
                             )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                               child: Text(
                                 'Major',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                                 child: TextFormField(
                               controller: _majorFieldController,
@@ -269,7 +276,7 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                               },
                               textInputAction: TextInputAction.next,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.number,
@@ -280,23 +287,23 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                                   : null,
                               decoration: new InputDecoration(
                                   hintText:
-                                      "Silahkan Isi dalam rentang 0 - 65535"),
+                                      "Silahkan isi dalam rentang 0 - 65535"),
                             )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                               child: Text(
                                 'Minor',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(
                                 child: TextFormField(
                               controller: _minorFieldController,
@@ -306,7 +313,7 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                               },
                               textInputAction: TextInputAction.done,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.number,
@@ -317,24 +324,36 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
                                   : null,
                               decoration: new InputDecoration(
                                   hintText:
-                                      "Silahkan Isi dalam rentang 0 - 65535"),
+                                      "Silahkan isi dalam rentang 0 - 65535"),
                             )),
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: MaterialButton(
-                                color: Color.fromRGBO(247, 180, 7, 1),
+                                color: Colors.blue[500],
                                 shape: StadiumBorder(),
                                 padding: EdgeInsets.all(15),
-                                child: Text(
-                                  "SIMPAN",
-                                  style: const TextStyle(
-                                      fontFamily: 'WorkSansSemiBold',
-                                      fontSize: 18.0,
-                                      color: Colors.white),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                        child: Icon(Icons.save,
+                                            color: Colors.white)),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "Simpan",
+                                      style: const TextStyle(
+                                          fontFamily: 'OpenSans',
+                                          fontSize: 14.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
                                 onPressed: () {
                                   FocusScope.of(context).unfocus();
@@ -348,9 +367,9 @@ class _AdminTambahBeaconState extends State<AdminTambahBeacon> {
 
                                       Future.delayed(Duration(seconds: 10),
                                           () async {
-                                        setState(() {
-                                          isApiCallProcess = false;
-                                        });
+                                        //setState(() {
+                                        isApiCallProcess = false;
+                                        //});
 
                                         Fluttertoast.showToast(
                                             msg: 'Silahkan coba kembali',

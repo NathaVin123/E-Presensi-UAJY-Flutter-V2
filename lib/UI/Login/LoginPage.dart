@@ -47,27 +47,7 @@ class _LoginPageState extends State<LoginPage>
           // ),
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Color.fromRGBO(23, 75, 137, 1),
-          title: showAdmin == 1
-              ? Row(
-                  children: <Widget>[
-                    TextButton.icon(
-                      label: Text('ADMIN',
-                          style: TextStyle(
-                              color: left,
-                              fontSize: 16.0,
-                              fontFamily: 'WorkSansSemiBold')),
-                      onPressed: () => Get.toNamed('/login/admin'),
-                      icon: Icon(
-                        Icons.app_settings_alt_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                )
-              : SizedBox(
-                  height: 0,
-                ),
+          backgroundColor: Colors.grey[50],
           actions: <Widget>[
             FutureBuilder(
               future: Connectivity().checkConnectivity(),
@@ -103,24 +83,31 @@ class _LoginPageState extends State<LoginPage>
           ],
         ),
         body: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(23, 75, 137, 1)),
+          decoration: BoxDecoration(color: Colors.grey[50]),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image(
-                      height: MediaQuery.of(context).size.height > 800
-                          ? 200.0
-                          : MediaQuery.of(context).size.height > 400
-                              ? 150
-                              : MediaQuery.of(context).size.height > 200
-                                  ? 75
-                                  : 0,
-                      fit: BoxFit.fill,
-                      image: const AssetImage(
-                          'assets/png/SplashPage_LogoAtmaJaya.png')),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.blue[800],
+                    radius: 75,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Image(
+                          height: MediaQuery.of(context).size.height > 800
+                              ? 200.0
+                              : MediaQuery.of(context).size.height > 400
+                                  ? 150
+                                  : MediaQuery.of(context).size.height > 200
+                                      ? 75
+                                      : 0,
+                          fit: BoxFit.fill,
+                          image: const AssetImage(
+                              'assets/png/SplashPage_LogoAtmaJaya.png')),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
@@ -159,6 +146,34 @@ class _LoginPageState extends State<LoginPage>
                     ],
                   ),
                 ),
+                showAdmin == 1
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                            left: 25, right: 25, bottom: 5),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.blue[500],
+                          ),
+                          child: Center(
+                            child: TextButton.icon(
+                              label: Text('ADMIN',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                      fontFamily: 'OpenSans')),
+                              onPressed: () => Get.toNamed('/login/admin'),
+                              icon: Icon(
+                                Icons.app_settings_alt_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : SizedBox(
+                        height: 0,
+                      ),
               ],
             ),
           ),
@@ -170,7 +185,7 @@ class _LoginPageState extends State<LoginPage>
       width: 300.0,
       height: 50.0,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(247, 180, 7, 1),
+        color: Colors.blue[500],
         borderRadius: BorderRadius.all(Radius.circular(25.0)),
         boxShadow: [
           BoxShadow(
@@ -193,9 +208,7 @@ class _LoginPageState extends State<LoginPage>
                 child: Text(
                   'MAHASISWA',
                   style: TextStyle(
-                      color: left,
-                      fontSize: 17.0,
-                      fontFamily: 'WorkSansSemiBold'),
+                      color: left, fontSize: 17.0, fontFamily: 'OpenSans'),
                 ),
               ),
             ),
@@ -209,9 +222,7 @@ class _LoginPageState extends State<LoginPage>
                 child: Text(
                   'DOSEN',
                   style: TextStyle(
-                      color: right,
-                      fontSize: 17.0,
-                      fontFamily: 'WorkSansSemiBold'),
+                      color: right, fontSize: 17.0, fontFamily: 'OpenSans'),
                 ),
               ),
             ),

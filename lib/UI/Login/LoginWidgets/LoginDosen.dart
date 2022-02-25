@@ -82,7 +82,7 @@ class _LoginDosenState extends State<LoginDosen> {
                                 },
                                 textInputAction: TextInputAction.next,
                                 style: const TextStyle(
-                                    fontFamily: 'WorkSansSemiBold',
+                                    fontFamily: 'OpenSans',
                                     fontSize: 18.0,
                                     color: Colors.black),
                                 keyboardType: TextInputType.phone,
@@ -93,7 +93,7 @@ class _LoginDosenState extends State<LoginDosen> {
                                     : null,
                                 decoration: new InputDecoration(
                                   contentPadding: EdgeInsets.all(20.0),
-                                  hintText: "NPP DOSEN",
+                                  hintText: "NPP",
                                   enabledBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.grey)),
@@ -116,7 +116,7 @@ class _LoginDosenState extends State<LoginDosen> {
                                 },
                                 textInputAction: TextInputAction.next,
                                 style: const TextStyle(
-                                    fontFamily: 'WorkSansSemiBold',
+                                    fontFamily: 'OpenSans',
                                     fontSize: 18.0,
                                     color: Colors.black),
                                 keyboardType: TextInputType.text,
@@ -151,19 +151,19 @@ class _LoginDosenState extends State<LoginDosen> {
                           _passwordFieldFocus.unfocus();
                         },
                         style: const TextStyle(
-                            fontFamily: 'WorkSansSemiBold',
+                            fontFamily: 'OpenSans',
                             fontSize: 18.0,
                             color: Colors.black),
                         keyboardType: TextInputType.text,
                         onSaved: (input) =>
                             loginDosenRequestModel.password = input,
                         validator: (input) => input.length < 1
-                            ? "PASSWORD tidak boleh kosong"
+                            ? "Password tidak boleh kosong"
                             : null,
                         obscureText: hidePassword,
                         decoration: new InputDecoration(
                           contentPadding: EdgeInsets.all(20.0),
-                          hintText: "PASSWORD",
+                          hintText: "Password",
                           enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.grey)),
                           focusedBorder: UnderlineInputBorder(
@@ -203,16 +203,16 @@ class _LoginDosenState extends State<LoginDosen> {
                                 width: 10,
                               ),
                               Text(
-                                "MASUK",
+                                "Masuk",
                                 style: const TextStyle(
-                                    fontFamily: 'WorkSansSemiBold',
+                                    fontFamily: 'OpenSans',
                                     fontSize: 18.0,
                                     color: Colors.white),
                               ),
                             ],
                           ),
                         ),
-                        color: Color.fromRGBO(247, 180, 7, 1),
+                        color: Colors.blue[500],
                         shape: StadiumBorder(),
                         onPressed: () {
                           FocusScope.of(context).unfocus();
@@ -226,9 +226,9 @@ class _LoginDosenState extends State<LoginDosen> {
 
                               APIService apiService = new APIService();
                               Future.delayed(Duration(seconds: 5), () {
-                                setState(() {
-                                  isApiCallProcess = false;
-                                });
+                                // setState(() {
+                                isApiCallProcess = false;
+                                // });
 
                                 Fluttertoast.showToast(
                                     msg: 'Silahkan coba kembali',
@@ -312,9 +312,7 @@ class _LoginDosenState extends State<LoginDosen> {
                   child: Text(
                 'Silahkan login dengan akun simka.',
                 style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontFamily: 'WorkSansMedium'),
+                    fontSize: 16, color: Colors.black, fontFamily: 'OpenSans'),
               )),
             ),
           ],

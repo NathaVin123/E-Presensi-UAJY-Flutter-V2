@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:presensiblebeacon/API/APIService.dart';
 import 'package:presensiblebeacon/MODEL/Ruangan/LepasRuangBeaconModel.dart';
 import 'package:presensiblebeacon/MODEL/Ruangan/ListDetailRuanganModel.dart';
-import 'package:presensiblebeacon/MODEL/Ruangan/UbahRuangBeaconModel.dart';
+// import 'package:presensiblebeacon/MODEL/Ruangan/UbahRuangBeaconModel.dart';
 import 'package:sk_alert_dialog/sk_alert_dialog.dart';
 
 class AdminHapusRuanganPage extends StatefulWidget {
@@ -61,13 +61,13 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
         centerTitle: true,
         title: Text(
           'Hapus Perangkat Ruangan',
           style: TextStyle(
               color: Colors.white,
-              fontFamily: 'WorkSansMedium',
+              fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -140,7 +140,7 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
                         'Mohon Tunggu..',
                         style: TextStyle(
                             fontSize: 15,
-                            fontFamily: 'WorkSansMedium',
+                            fontFamily: 'OpenSans',
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -162,12 +162,12 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(25)),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 'Ruangan Kosong',
                                 style: TextStyle(
                                     fontSize: 18,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
@@ -181,13 +181,13 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
               : Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: TextFormField(
                             decoration: InputDecoration(
                               hintText: 'Cari Ruangan',
@@ -198,7 +198,7 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
                               disabledBorder: InputBorder.none,
                             ),
                             style: const TextStyle(
-                                fontFamily: 'WorkSansSemiBold',
+                                fontFamily: 'OpenSans',
                                 fontSize: 16.0,
                                 color: Colors.black),
                             onChanged: (text) {
@@ -230,61 +230,72 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
                                     borderRadius: BorderRadius.circular(25)),
                                 child: new ListTile(
                                   title: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(4.0),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(4.0),
                                           child: new Text(
                                             'Ruang ${ruanganListSearch[index].ruang}',
                                             style: TextStyle(
                                                 fontSize: 18,
-                                                fontFamily: 'WorkSansMedium',
+                                                fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold),
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'Fakultas ${ruanganListSearch[index].fakultas}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontFamily: 'WorkSansMedium',
+                                        // Padding(
+                                        //   padding: const EdgeInsets.all(4.0),
+                                        //   child: new Text(
+                                        //     'Fakultas ${ruanganListSearch[index].fakultas}',
+                                        //     style: TextStyle(
+                                        //       fontSize: 16,
+                                        //       fontFamily: 'OpenSans',
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        // Padding(
+                                        //   padding: const EdgeInsets.all(4.0),
+                                        //   child: new Text(
+                                        //     'Prodi ${ruanganListSearch[index].prodi}',
+                                        //     style: TextStyle(
+                                        //       fontSize: 16,
+                                        //       fontFamily: 'OpenSans',
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: new Text(
+                                                'Nama Device : ${ruanganListSearch[index].namadevice}',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontFamily: 'OpenSans',
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'Prodi ${ruanganListSearch[index].prodi}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontFamily: 'WorkSansMedium',
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: new Text(
+                                                'Jarak : ${ruanganListSearch[index].jarak}',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontFamily: 'OpenSans',
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'Nama Device : ${ruanganListSearch[index].namadevice}',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: 'WorkSansMedium',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'Jarak : ${ruanganListSearch[index].jarak}',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: 'WorkSansMedium',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
+
                                         MaterialButton(
                                             color: Colors.red,
                                             shape: StadiumBorder(),
@@ -292,8 +303,7 @@ class _AdminHapusRuanganPageState extends State<AdminHapusRuanganPage>
                                             child: Text(
                                               "Hapus Perangkat",
                                               style: const TextStyle(
-                                                  fontFamily:
-                                                      'WorkSansSemiBold',
+                                                  fontFamily: 'OpenSans',
                                                   fontSize: 14.0,
                                                   color: Colors.white),
                                             ),

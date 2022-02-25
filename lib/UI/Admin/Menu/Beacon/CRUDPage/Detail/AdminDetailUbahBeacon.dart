@@ -76,16 +76,17 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
   Widget buildUbahBeacon(BuildContext context) {
     // getDataUbahBeacon();
     return Scaffold(
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.grey[50],
         appBar: AppBar(
+          foregroundColor: Colors.black,
           elevation: 0,
-          backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+          backgroundColor: Colors.blue[100],
           centerTitle: true,
           title: Text(
-            'Ubah Beacon',
+            'Ubah Spesifikasi Beacon',
             style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'WorkSansMedium',
+                color: Colors.black,
+                fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -126,9 +127,13 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.grey[500],
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 0.75,
+                    spreadRadius: 0.25)
+              ], color: Colors.white, borderRadius: BorderRadius.circular(25)),
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -144,7 +149,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                 'UUID',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -156,7 +161,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                               controller: TextEditingController(text: uuid),
                               enabled: false,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.grey),
                               decoration: new InputDecoration(hintText: uuid),
@@ -171,7 +176,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                 'Nama Perangkat',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -190,7 +195,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                               },
                               textInputAction: TextInputAction.next,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.text,
@@ -208,7 +213,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                 'Jarak Minimal',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -227,7 +232,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                               },
                               textInputAction: TextInputAction.done,
                               style: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
+                                  fontFamily: 'OpenSans',
                                   fontSize: 16.0,
                                   color: Colors.black),
                               keyboardType: TextInputType.number,
@@ -247,7 +252,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                 'Major',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -266,7 +271,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                     },
                                     textInputAction: TextInputAction.done,
                                     style: const TextStyle(
-                                        fontFamily: 'WorkSansSemiBold',
+                                        fontFamily: 'OpenSans',
                                         fontSize: 16.0,
                                         color: Colors.black),
                                     keyboardType: TextInputType.number,
@@ -285,7 +290,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                 'Minor',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -303,7 +308,7 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                                     },
                                     textInputAction: TextInputAction.done,
                                     style: const TextStyle(
-                                        fontFamily: 'WorkSansSemiBold',
+                                        fontFamily: 'OpenSans',
                                         fontSize: 16.0,
                                         color: Colors.black),
                                     keyboardType: TextInputType.number,
@@ -319,15 +324,28 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
                             height: 10,
                           ),
                           MaterialButton(
-                              color: Color.fromRGBO(247, 180, 7, 1),
+                              color: Colors.blue[500],
                               shape: StadiumBorder(),
                               padding: EdgeInsets.all(15),
-                              child: Text(
-                                "Ubah",
-                                style: const TextStyle(
-                                    fontFamily: 'WorkSansSemiBold',
-                                    fontSize: 18.0,
-                                    color: Colors.white),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    "Ubah",
+                                    style: const TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 18.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                               onPressed: () {
                                 FocusScope.of(context).unfocus();
@@ -341,9 +359,9 @@ class _AdminDetailUbahBeaconState extends State<AdminDetailUbahBeacon> {
 
                                     Future.delayed(Duration(seconds: 10),
                                         () async {
-                                      setState(() {
-                                        isApiCallProcess = false;
-                                      });
+                                      //setState(() {
+                                      isApiCallProcess = false;
+                                      //});
 
                                       Fluttertoast.showToast(
                                           msg: 'Silahkan coba kembali',

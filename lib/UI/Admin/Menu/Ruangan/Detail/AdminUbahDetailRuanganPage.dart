@@ -127,14 +127,15 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
     // getListBeacon();
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
         centerTitle: true,
         title: Text(
-          'Ubah Perangkat Ruang',
+          'Ubah Perangkat Beacon',
           style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'WorkSansMedium',
+              color: Colors.black,
+              fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -171,15 +172,22 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
           )
         ],
       ),
-      backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+      backgroundColor: Colors.grey[50],
       body: Column(
         children: <Widget>[
           Container(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(4.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500],
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 0.75,
+                          spreadRadius: 0.25)
+                    ],
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(25)),
                 child: Column(
                   children: <Widget>[
@@ -189,7 +197,7 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                         'Ruang : ${ruang ?? "-"}',
                         style: TextStyle(
                             fontSize: 20,
-                            fontFamily: 'WorkSansMedium',
+                            fontFamily: 'OpenSans',
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -199,7 +207,7 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                         'Fakultas : ${fakultas ?? "-"}',
                         style: TextStyle(
                           fontSize: 18,
-                          fontFamily: 'WorkSansMedium',
+                          fontFamily: 'OpenSans',
                         ),
                       ),
                     ),
@@ -209,7 +217,7 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                         'Program Studi : ${prodi ?? "-"}',
                         style: TextStyle(
                           fontSize: 18,
-                          fontFamily: 'WorkSansMedium',
+                          fontFamily: 'OpenSans',
                         ),
                       ),
                     ),
@@ -219,15 +227,15 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: Center(
               child: Text(
-                'Silahkan pilih perangkat',
+                'Perangkat Beacon',
                 style: TextStyle(
                     fontSize: 20,
-                    fontFamily: 'WorkSansMedium',
+                    fontFamily: 'OpenSans',
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: Colors.black),
               ),
             ),
           ),
@@ -247,7 +255,7 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           CircularProgressIndicator(
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                           SizedBox(
                             height: 20,
@@ -256,9 +264,9 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                             'Mohon Tunggu..',
                             style: TextStyle(
                                 fontSize: 15,
-                                fontFamily: 'WorkSansMedium',
+                                fontFamily: 'OpenSans',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Colors.black),
                           ),
                         ],
                       ),
@@ -278,12 +286,12 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                                     color: Colors.red,
                                     borderRadius: BorderRadius.circular(25)),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(4.0),
                                   child: Text(
                                     'Beacon Kosong',
                                     style: TextStyle(
                                         fontSize: 18,
-                                        fontFamily: 'WorkSansMedium',
+                                        fontFamily: 'OpenSans',
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -304,35 +312,50 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                                     left: 12, right: 12, top: 8, bottom: 8),
                                 child: Container(
                                   decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey[500],
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.75,
+                                            spreadRadius: 0.25)
+                                      ],
                                       color: selectedKolomDevice == index
-                                          ? Colors.yellow
-                                          : Colors.grey[200],
+                                          ? Colors.blue[500]
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(25)),
                                   child: new ListTile(
                                     title: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(4.0),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               listBeaconResponseModel
                                                   .data[index].namadevice,
                                               style: TextStyle(
                                                   fontSize: 18,
-                                                  fontFamily: 'WorkSansMedium',
-                                                  fontWeight: FontWeight.bold),
+                                                  fontFamily: 'OpenSans',
+                                                  fontWeight: FontWeight.bold,
+                                                  color: selectedKolomDevice ==
+                                                          index
+                                                      ? Colors.white
+                                                      : Colors.black),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               '${listBeaconResponseModel.data[index].jarakmin} m',
                                               style: TextStyle(
                                                 fontSize: 16,
-                                                fontFamily: 'WorkSansMedium',
+                                                fontFamily: 'OpenSans',
+                                                color:
+                                                    selectedKolomDevice == index
+                                                        ? Colors.white
+                                                        : Colors.black,
                                               ),
                                             ),
                                           ),
@@ -365,15 +388,27 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: MaterialButton(
-                    color: Color.fromRGBO(247, 180, 7, 1),
+                    color: Colors.blue[200],
                     shape: StadiumBorder(),
                     padding: EdgeInsets.all(15),
-                    child: Text(
-                      "Ubah",
-                      style: const TextStyle(
-                          fontFamily: 'WorkSansSemiBold',
-                          fontSize: 18.0,
-                          color: Colors.white),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.edit,
+                          color: Colors.black,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          "Ubah",
+                          style: const TextStyle(
+                              fontFamily: 'OpenSans',
+                              fontSize: 18.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                     onPressed: () {
                       FocusScope.of(context).unfocus();
@@ -393,9 +428,9 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
                         });
 
                         Future.delayed(Duration(seconds: 10), () async {
-                          setState(() {
-                            isApiCallProcess = false;
-                          });
+                          //setState(() {
+                          isApiCallProcess = false;
+                          //});
 
                           Fluttertoast.showToast(
                               msg: 'Silahkan coba kembali',
@@ -443,25 +478,26 @@ class _AdminDetailRuanganPageState extends State<AdminDetailRuanganPage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: MaterialButton(
-                    color: Colors.blue,
+                    color: Colors.blue[200],
                     shape: StadiumBorder(),
                     padding: EdgeInsets.all(15),
                     child: Row(
                       children: [
                         Icon(
                           Icons.refresh_rounded,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
-                        // SizedBox(
-                        //   width: 10,
-                        // ),
-                        // Text(
-                        //   "Segarkan",
-                        //   style: const TextStyle(
-                        //       fontFamily: 'WorkSansSemiBold',
-                        //       fontSize: 18.0,
-                        //       color: Colors.white),
-                        // ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Segarkan",
+                          style: const TextStyle(
+                              fontFamily: 'OpenSans',
+                              fontSize: 18.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                     onPressed: () => {

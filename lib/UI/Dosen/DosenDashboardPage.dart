@@ -24,16 +24,11 @@ class DosenDashboardPage extends StatefulWidget {
   _DosenDashboardPageState createState() => _DosenDashboardPageState();
 }
 
-// class _DosenDashboardPageState extends State<DosenDashboardPage>
-//     with SingleTickerProviderStateMixin {
 class _DosenDashboardPageState extends State<DosenDashboardPage> {
   int index = 1;
 
   String npp = "";
   String namadsn = "";
-
-  // String _timeString;
-  // String _dateString;
 
   final screens = [
     // Center(child: Text('Menu', style: TextStyle(fontSize: 72))),
@@ -125,25 +120,25 @@ class _DosenDashboardPageState extends State<DosenDashboardPage> {
                   fontWeight: FontWeight.bold,
                   fontFamily: 'OpenSans'))),
           child: NavigationBar(
-            height: 75,
+            height: 65,
             backgroundColor: Colors.blue[100],
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+            labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
             selectedIndex: index,
             animationDuration: Duration(seconds: 1),
             onDestinationSelected: (index) =>
                 setState(() => this.index = index),
             destinations: [
               NavigationDestination(
-                  icon: Icon(Icons.schedule_rounded),
+                  icon: Icon(Icons.schedule_outlined),
                   selectedIcon: Icon(
                     Icons.schedule,
                     color: Colors.black,
                   ),
                   label: 'Jadwal'),
               NavigationDestination(
-                  icon: Icon(Icons.arrow_upward),
+                  icon: Icon(Icons.arrow_upward_outlined),
                   selectedIcon: Icon(
-                    Icons.arrow_upward_outlined,
+                    Icons.arrow_upward,
                     color: Colors.black,
                   ),
                   label: 'Presensi'),
@@ -151,69 +146,10 @@ class _DosenDashboardPageState extends State<DosenDashboardPage> {
                   icon: Icon(Icons.history_outlined),
                   selectedIcon: Icon(Icons.history, color: Colors.black),
                   label: 'Riwayat'),
-              // NavigationDestination(
-              //     icon: Icon(Icons.person_outline),
-              //     selectedIcon: Icon(
-              //       Icons.person,
-              //       color: Colors.black,
-              //     ),
-              //     label: 'Akun')
             ],
           ),
         ),
       ),
-      // body: new TabBarView(
-      //   physics: NeverScrollableScrollPhysics(),
-      //   controller: controller,
-      //   children: <Widget>[
-      //     new Presensi.DosenPresensiDashboardPage(),
-      //     new Jadwal.DosenJadwalDashboardPage(),
-      //     new Riwayat.DosenRiwayatDashboardPage(),
-      //     new Akun.DosenAkunDashboardPage(),
-      //   ],
-      // ),
-      // bottomNavigationBar: new Material(
-      //   elevation: 25,
-      //   color: Colors.white,
-      //   child: new TabBar(
-      //     labelStyle: TextStyle(
-      //         fontFamily: 'WorkSansMedium',
-      //         fontWeight: FontWeight.bold,
-      //         fontSize: 12),
-      //     controller: controller,
-      //     indicatorColor: Colors.grey[800],
-      //     labelColor: Colors.black,
-      //     unselectedLabelColor: Colors.grey,
-      //     // isScrollable: true,
-      //     onTap: (value) {
-      //       setState(() {
-      //         currentPage = value;
-      //       });
-      //     },
-      //     tabs: <Widget>[
-      //       new Tab(
-      //         icon: new Icon(Icons.arrow_upward_rounded,
-      //             color: controller.index == 0 ? Colors.black : Colors.grey),
-      //         text: "Presensi",
-      //       ),
-      //       new Tab(
-      //         icon: new Icon(Icons.schedule_rounded,
-      //             color: controller.index == 1 ? Colors.black : Colors.grey),
-      //         text: "Jadwal",
-      //       ),
-      //       new Tab(
-      //         icon: new Icon(Icons.history_rounded,
-      //             color: controller.index == 2 ? Colors.black : Colors.grey),
-      //         text: "Riwayat",
-      //       ),
-      //       new Tab(
-      //         icon: new Icon(Icons.person_rounded,
-      //             color: controller.index == 3 ? Colors.black : Colors.grey),
-      //         text: "Akun",
-      //       )
-      //     ],
-      //   ),
-      // ),
       drawer: Drawer(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
@@ -223,44 +159,6 @@ class _DosenDashboardPageState extends State<DosenDashboardPage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 50, bottom: 14),
-            //   child: Image.asset(
-            //     'SplashPage_LogoAtmaJaya_3'.png,
-            //     height: 30,
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-            //   child: Divider(
-            //     height: 1,
-            //     thickness: 1,
-            //     color: Colors.grey,
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Column(
-            //     children: [
-            //       Text(
-            //         _dateString,
-            //         style: TextStyle(
-            //             fontWeight: FontWeight.bold,
-            //             fontSize: 16,
-            //             fontFamily: 'OpenSans',
-            //             color: Colors.black),
-            //       ),
-            //       Text(
-            //         _timeString,
-            //         style: TextStyle(
-            //             fontWeight: FontWeight.bold,
-            //             fontSize: 18,
-            //             fontFamily: 'OpenSans',
-            //             color: Colors.black),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             Column(
               children: [
                 Align(
@@ -268,7 +166,7 @@ class _DosenDashboardPageState extends State<DosenDashboardPage> {
                   child: Padding(
                     padding: EdgeInsets.only(top: 40, left: 14),
                     child: Initicon(
-                      text: namadsn,
+                      text: namadsn ?? '-',
                       backgroundColor: Colors.grey[400],
                       size: 80,
                     ),
@@ -285,7 +183,7 @@ class _DosenDashboardPageState extends State<DosenDashboardPage> {
                           child: Scrollbar(
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-                              child: Text(namadsn,
+                              child: Text(namadsn ?? '-',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans',
@@ -302,11 +200,9 @@ class _DosenDashboardPageState extends State<DosenDashboardPage> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            npp,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'OpenSans',
-                                fontSize: 18),
+                            npp ?? '-',
+                            style:
+                                TextStyle(fontFamily: 'OpenSans', fontSize: 18),
                           ),
                         ),
                       ),

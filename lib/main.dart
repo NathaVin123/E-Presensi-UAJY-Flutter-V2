@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:presensiblebeacon/UI/Admin/AdminDashboardPage.dart';
+import 'package:presensiblebeacon/UI/Dosen/Presensi/Detail/TampilPesertaKelas/DosenTampilKehadiranPesertaKelasPage%20copy.dart';
+import 'package:presensiblebeacon/UI/Dosen/Riwayat/TampilPresensiAppBar.dart';
 import 'package:presensiblebeacon/UI/Login/LoginAdmin.dart';
 import 'package:presensiblebeacon/UI/Admin/Menu/Beacon/CRUDPage/AdminTampilListBeacon.dart';
 import 'package:presensiblebeacon/UI/Admin/Menu/Ruangan/AdminHapusRuanganPage.dart';
@@ -239,6 +241,15 @@ class _MyAppState extends State<MyApp> {
             GetPage(
                 name: '/dosen/dashboard/presensi/detail/tampilkehadiranpeserta',
                 page: () => DosenTampilKehadiranPesertaKelasPage()),
+
+            GetPage(
+                name:
+                    '/dosen/dashboard/presensi/detail/tampilkehadiranpeserta/tes',
+                page: () => DosenTampilKehadiranPesertaKelasPageTes()),
+
+            GetPage(
+                name: '/dosen/dashboard/riwayat/presensi/appbar',
+                page: () => TampilPresensiAppBar()),
             // GetPage(
             //     name: '/dosen/dashboard/presensi/notifikasi',
             //     page: () => DosenNotifikasiPresensiPage()),

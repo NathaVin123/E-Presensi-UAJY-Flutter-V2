@@ -51,14 +51,15 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
         centerTitle: true,
         title: Text(
-          'Ubah Beacon',
+          'Pilih Beacon',
           style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'WorkSansMedium',
+              color: Colors.black,
+              fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -95,7 +96,15 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text(
+          'Segarkan',
+          style: TextStyle(
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
+        ),
+        backgroundColor: Colors.blue[200],
         onPressed: () => {
           getListBeacon(),
           Fluttertoast.showToast(
@@ -107,10 +116,13 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
               textColor: Colors.white,
               fontSize: 14.0)
         },
-        child: Icon(Icons.refresh_rounded),
+        icon: Icon(
+          Icons.refresh_rounded,
+          color: Colors.black,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-      backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+      backgroundColor: Colors.grey[50],
       body: listBeaconResponseModel.data == null
           ? Container(
               child: Padding(
@@ -120,7 +132,7 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircularProgressIndicator(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       SizedBox(
                         height: 20,
@@ -129,9 +141,9 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                         'Mohon Tunggu..',
                         style: TextStyle(
                             fontSize: 15,
-                            fontFamily: 'WorkSansMedium',
+                            fontFamily: 'OpenSans',
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                     ],
                   ),
@@ -151,12 +163,12 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(25)),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 'Beacon Kosong',
                                 style: TextStyle(
                                     fontSize: 18,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
@@ -170,15 +182,23 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
               : Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.grey[200],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500],
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.75,
+                                  spreadRadius: 0.25)
+                            ],
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: TextFormField(
                             decoration: InputDecoration(
+                              icon: Icon(Icons.search),
                               hintText: 'Cari Beacon',
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -187,7 +207,7 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                               disabledBorder: InputBorder.none,
                             ),
                             style: const TextStyle(
-                                fontFamily: 'WorkSansSemiBold',
+                                fontFamily: 'OpenSans',
                                 fontSize: 16.0,
                                 color: Colors.black),
                             onChanged: (text) {
@@ -216,22 +236,29 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                                   left: 12, right: 12, top: 8, bottom: 8),
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.grey[200],
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey[500],
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 0.75,
+                                          spreadRadius: 0.25)
+                                    ],
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(25)),
                                 child: new ListTile(
                                   title: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(4.0),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(4.0),
                                           child: new Text(
                                             beaconListSearch[index].namadevice,
                                             style: TextStyle(
                                                 fontSize: 22,
-                                                fontFamily: 'WorkSansMedium',
+                                                fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold),
                                           ),
                                         ),
@@ -239,12 +266,12 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                                           'UUID',
                                           style: TextStyle(
                                             fontSize: 15,
-                                            fontFamily: 'WorkSansMedium',
+                                            fontFamily: 'OpenSans',
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(4.0),
                                           child: Scrollbar(
                                             child: SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -252,88 +279,129 @@ class _AdminUbahBeaconState extends State<AdminUbahBeacon> {
                                                 beaconListSearch[index].uuid,
                                                 style: TextStyle(
                                                   fontSize: 15,
-                                                  fontFamily: 'WorkSansMedium',
+                                                  fontFamily: 'OpenSans',
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'Jarak Minimal',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'WorkSansMedium',
-                                              fontWeight: FontWeight.bold,
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    'Jarak Minimal',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily: 'OpenSans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    '${beaconListSearch[index].jarakmin} m',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily: 'OpenSans',
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ),
+                                            Column(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    'Major',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily: 'OpenSans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    '${beaconListSearch[index].major}',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily: 'OpenSans',
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    'Minor',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily: 'OpenSans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: new Text(
+                                                    '${beaconListSearch[index].minor}',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily: 'OpenSans',
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            '${beaconListSearch[index].jarakmin} m',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'WorkSansMedium',
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'MAJOR',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'WorkSansMedium',
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            '${beaconListSearch[index].major}',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'WorkSansMedium',
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            'Minor',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'WorkSansMedium',
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: new Text(
-                                            '${beaconListSearch[index].minor}',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'WorkSansMedium',
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(4.0),
                                           child: MaterialButton(
-                                              color: Colors.yellow[800],
+                                              color: Colors.blue[500],
                                               shape: StadiumBorder(),
                                               padding: EdgeInsets.all(15),
-                                              child: Text(
-                                                "Ubah Beacon",
-                                                style: const TextStyle(
-                                                    fontFamily:
-                                                        'WorkSansSemiBold',
-                                                    fontSize: 14.0,
-                                                    color: Colors.white),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.edit,
+                                                    color: Colors.white,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Text(
+                                                    "Ubah Spesifikasi Beacon",
+                                                    style: const TextStyle(
+                                                        fontFamily: 'OpenSans',
+                                                        fontSize: 14.0,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ],
                                               ),
                                               onPressed: () async {
                                                 Get.toNamed(

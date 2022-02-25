@@ -54,7 +54,7 @@ class _SplashPageState extends State<SplashPage> {
           //   decoration: BoxDecoration(color: Color.fromRGBO(23, 75, 137, 1)),
           // ),
           Container(
-              decoration: BoxDecoration(color: Colors.grey[300]),
+              decoration: BoxDecoration(color: Colors.grey[50]),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[

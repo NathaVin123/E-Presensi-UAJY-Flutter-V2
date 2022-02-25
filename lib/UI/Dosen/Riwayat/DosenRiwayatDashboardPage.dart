@@ -24,7 +24,7 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
 
   String npp = "";
 
-  DateTime timeNow = DateTime.now();
+  // DateTime timeNow = DateTime.now();
 
   RiwayatDosenRequestModel riwayatDosenRequestModel;
 
@@ -58,15 +58,15 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
   }
 
   void getDataRiwayatDosen() async {
-    setState(() {
-      riwayatDosenRequestModel.npp = npp;
+    // setState(() {
+    riwayatDosenRequestModel.npp = npp;
 
-      print(riwayatDosenRequestModel.toJson());
-      APIService apiService = new APIService();
-      apiService.postRiwayatDosen(riwayatDosenRequestModel).then((value) async {
-        riwayatDosenResponseModel = value;
-      });
+    print(riwayatDosenRequestModel.toJson());
+    APIService apiService = new APIService();
+    apiService.postRiwayatDosen(riwayatDosenRequestModel).then((value) async {
+      riwayatDosenResponseModel = value;
     });
+    // });
   }
 
   // void _getTime() {
@@ -118,7 +118,7 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                     textColor: Colors.white,
                     fontSize: 14.0)
               }),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.blue[100],
@@ -274,7 +274,7 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                             blurRadius: 0.75,
                                             spreadRadius: 0.25)
                                       ],
-                                      color: Colors.grey[200],
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(25)),
                                   child: new ListTile(
                                     title: Column(
@@ -286,7 +286,7 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                             child: Text(
                                               '${riwayatDosenResponseModel.data[index].hari1}, ${riwayatDosenResponseModel.data[index].tglmasuk}',
                                               style: TextStyle(
-                                                color: Colors.blue,
+                                                color: Colors.blue[500],
                                                 fontSize: 16,
                                                 fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold,
@@ -340,16 +340,8 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                           ),
                                         ),
                                         ExpansionTile(
-                                          // title: Text(
-                                          //   'Lihat lebih detail',
-                                          //   style: TextStyle(
-                                          //       fontFamily:
-                                          //           'OpenSans',
-                                          //       fontWeight: FontWeight.bold,
-                                          //       fontSize: 14),
-                                          // ),
                                           title: Text(
-                                            'Lihat lebih detail',
+                                            'Detail',
                                             style: TextStyle(
                                                 fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold,
@@ -484,6 +476,75 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                                 ),
                                               ],
                                             ),
+                                            // Padding(
+                                            //   padding:
+                                            //       const EdgeInsets.all(8.0),
+                                            //   child: MaterialButton(
+                                            //     padding: EdgeInsets.all(8),
+                                            //     child: Padding(
+                                            //       padding: const EdgeInsets
+                                            //               .symmetric(
+                                            //           vertical: 8,
+                                            //           horizontal: 26),
+                                            //       child: Scrollbar(
+                                            //         child:
+                                            //             SingleChildScrollView(
+                                            //           scrollDirection:
+                                            //               Axis.horizontal,
+                                            //           child: Row(
+                                            //             mainAxisAlignment:
+                                            //                 MainAxisAlignment
+                                            //                     .center,
+                                            //             children: <Widget>[
+                                            //               Icon(
+                                            //                 Icons
+                                            //                     .people_alt_rounded,
+                                            //                 color: Colors.white,
+                                            //               ),
+                                            //               SizedBox(
+                                            //                 width: 20,
+                                            //               ),
+                                            //               Text(
+                                            //                 'Tampil Kehadiran Kelas',
+                                            //                 style: const TextStyle(
+                                            //                     fontWeight:
+                                            //                         FontWeight
+                                            //                             .bold,
+                                            //                     fontFamily:
+                                            //                         'OpenSans',
+                                            //                     fontSize: 16,
+                                            //                     color: Colors
+                                            //                         .white),
+                                            //               ),
+                                            //             ],
+                                            //           ),
+                                            //         ),
+                                            //       ),
+                                            //     ),
+                                            //     color: Colors.blue[500],
+                                            //     shape: StadiumBorder(),
+                                            //     onPressed: () async {
+                                            //       SharedPreferences
+                                            //           dataPresensiDosen =
+                                            //           await SharedPreferences
+                                            //               .getInstance();
+
+                                            //       await dataPresensiDosen.setInt(
+                                            //           'idkelas',
+                                            //           riwayatDosenResponseModel
+                                            //               .data[index].idkelas);
+
+                                            //       await dataPresensiDosen.setInt(
+                                            //           'pertemuan',
+                                            //           riwayatDosenResponseModel
+                                            //               .data[index]
+                                            //               .pertemuan);
+
+                                            //       Get.toNamed(
+                                            //           '/dosen/dashboard/presensi/detail/tampilkehadiranpeserta');
+                                            //     },
+                                            //   ),
+                                            // ),
                                             Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
@@ -507,13 +568,13 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                                           Icon(
                                                             Icons
                                                                 .people_alt_rounded,
-                                                            color: Colors.black,
+                                                            color: Colors.white,
                                                           ),
                                                           SizedBox(
                                                             width: 20,
                                                           ),
                                                           Text(
-                                                            'Tampil Kehadiran Kelas',
+                                                            'Tampil Presensi Mahasiswa',
                                                             style: const TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -522,14 +583,14 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                                                     'OpenSans',
                                                                 fontSize: 16,
                                                                 color: Colors
-                                                                    .black),
+                                                                    .white),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                                color: Colors.blue[200],
+                                                color: Colors.blue[500],
                                                 shape: StadiumBorder(),
                                                 onPressed: () async {
                                                   SharedPreferences
@@ -549,7 +610,7 @@ class _DosenRiwayatDashboardPageState extends State<DosenRiwayatDashboardPage> {
                                                           .pertemuan);
 
                                                   Get.toNamed(
-                                                      '/dosen/dashboard/presensi/detail/tampilkehadiranpeserta');
+                                                      '/dosen/dashboard/riwayat/presensi/appbar');
                                                 },
                                               ),
                                             ),

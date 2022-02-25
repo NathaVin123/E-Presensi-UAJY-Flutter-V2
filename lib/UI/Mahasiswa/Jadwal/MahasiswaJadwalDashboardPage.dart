@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:presensiblebeacon/API/APIService.dart';
 import 'package:presensiblebeacon/MODEL/Mahasiswa/JadwalMahasiswaModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,8 +20,8 @@ class MahasiswaJadwalDashboardPage extends StatefulWidget {
 
 class _MahasiswaJadwalDashboardPageState
     extends State<MahasiswaJadwalDashboardPage> {
-  String _timeString;
-  String _dateString;
+  // String _timeString;
+  // String _dateString;
 
   String npm = "";
 
@@ -37,11 +37,11 @@ class _MahasiswaJadwalDashboardPageState
     jadwalMahasiswaRequestModel = JadwalMahasiswaRequestModel();
     jadwalMahasiswaResponseModel = JadwalMahasiswaResponseModel();
 
-    _timeString = _formatTime(DateTime.now());
-    _dateString = _formatDate(DateTime.now());
+    // _timeString = _formatTime(DateTime.now());
+    // _dateString = _formatDate(DateTime.now());
 
-    Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
-    Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
+    // Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    // Timer.periodic(Duration(hours: 1), (Timer t) => _getDate());
 
     Timer.periodic(Duration(seconds: 2), (Timer t) {
       // getDataMahasiswa();
@@ -60,7 +60,7 @@ class _MahasiswaJadwalDashboardPageState
   }
 
   void getDataJadwalMahasiswa() async {
-    setState(() {
+    // setState(() {
       jadwalMahasiswaRequestModel.npm = npm;
 
       print(jadwalMahasiswaRequestModel.toJson());
@@ -70,42 +70,48 @@ class _MahasiswaJadwalDashboardPageState
           .then((value) async {
         jadwalMahasiswaResponseModel = value;
       });
-    });
+    // });
   }
 
-  void _getTime() {
-    final DateTime now = DateTime.now();
-    final String formattedTime = _formatTime(now);
+  // void _getTime() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedTime = _formatTime(now);
 
-    setState(() {
-      _timeString = formattedTime;
-    });
-  }
+  //   setState(() {
+  //     _timeString = formattedTime;
+  //   });
+  // }
 
-  void _getDate() {
-    final DateTime now = DateTime.now();
-    final String formattedDate = _formatDate(now);
+  // void _getDate() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedDate = _formatDate(now);
 
-    setState(() {
-      _dateString = formattedDate;
-    });
-  }
+  //   setState(() {
+  //     _dateString = formattedDate;
+  //   });
+  // }
 
-  String _formatDate(DateTime dateTime) {
-    return DateFormat('d MMMM y').format(dateTime);
-  }
+  // String _formatDate(DateTime dateTime) {
+  //   return DateFormat('d MMMM y').format(dateTime);
+  // }
 
-  String _formatTime(DateTime dateTime) {
-    return DateFormat('HH:mm:ss').format(dateTime);
-  }
+  // String _formatTime(DateTime dateTime) {
+  //   return DateFormat('HH:mm:ss').format(dateTime);
+  // }
 
   @override
   Widget build(BuildContext context) {
     getDataMahasiswa();
     // getDataJadwalMahasiswa();
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.refresh_rounded),
+      floatingActionButton: FloatingActionButton.extended(
+          label: Text('Segarkan',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans',
+                  color: Colors.black)),
+          backgroundColor: Colors.blue[200],
+          icon: Icon(Icons.refresh_rounded, color: Colors.black),
           onPressed: () => {
                 getDataJadwalMahasiswa(),
                 Fluttertoast.showToast(
@@ -117,16 +123,21 @@ class _MahasiswaJadwalDashboardPageState
                     textColor: Colors.white,
                     fontSize: 14.0)
               }),
-      backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
+        leading: IconButton(
+            icon: Icon(Icons.menu, color: Colors.black),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            }),
         centerTitle: true,
         title: Text(
           'Jadwal Kuliah',
           style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'WorkSansMedium',
+              color: Colors.black,
+              fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -165,75 +176,77 @@ class _MahasiswaJadwalDashboardPageState
       ),
       body: Column(
         children: <Widget>[
-          Center(
-            child: Column(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Center(
-                      child: Text(
-                        _dateString,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'WorkSansMedium',
-                            color: Colors.white),
-                      ),
-                    ),
-                    Center(
-                      child: Text(
-                        _timeString,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontFamily: 'WorkSansMedium',
-                            color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Center(
-            child: Column(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Kuliah 1 Minggu Selanjutnya',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'WorkSansMedium',
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          // Center(
+          //   child: Column(
+          //     children: <Widget>[
+          //       Column(
+          //         children: <Widget>[
+          //           Center(
+          //             child: Text(
+          //               _dateString,
+          //               style: TextStyle(
+          //                   fontSize: 16,
+          //                   fontFamily: 'OpenSans',
+          //                   color: Colors.white),
+          //             ),
+          //           ),
+          //           Center(
+          //             child: Text(
+          //               _timeString,
+          //               style: TextStyle(
+          //                   fontSize: 25,
+          //                   fontFamily: 'OpenSans',
+          //                   color: Colors.white),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // Center(
+          //   child: Column(
+          //     children: <Widget>[
+          //       Column(
+          //         children: <Widget>[
+          //           Padding(
+          //             padding: const EdgeInsets.all(10),
+          //             child: Text(
+          //               'Kuliah 1 Minggu Selanjutnya',
+          //               style: TextStyle(
+          //                   fontSize: 20,
+          //                   fontFamily: 'OpenSans',
+          //                   color: Colors.white,
+          //                   fontWeight: FontWeight.bold),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
           jadwalMahasiswaResponseModel.data == null
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Mohon Tunggu..',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontFamily: 'WorkSansMedium',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ],
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        CircularProgressIndicator(
+                          color: Colors.black,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Mohon Tunggu..',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'OpenSans',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               : jadwalMahasiswaResponseModel.data.isEmpty
@@ -254,7 +267,7 @@ class _MahasiswaJadwalDashboardPageState
                                     'Jadwal kuliah anda kosong',
                                     style: TextStyle(
                                         fontSize: 18,
-                                        fontFamily: 'WorkSansMedium',
+                                        fontFamily: 'OpenSans',
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -265,7 +278,7 @@ class _MahasiswaJadwalDashboardPageState
                               //   'Silakan tekan tombol "Segarkan" jika bermasalah',
                               //   style: TextStyle(
                               //       fontSize: 14,
-                              //       fontFamily: 'WorkSansMedium',
+                              //       fontFamily: 'OpenSans',
                               //       fontWeight: FontWeight.bold,
                               //       color: Colors.white),
                               // ),
@@ -311,7 +324,7 @@ class _MahasiswaJadwalDashboardPageState
                                                               style: TextStyle(
                                                                   fontSize: 15,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold),
@@ -330,7 +343,7 @@ class _MahasiswaJadwalDashboardPageState
                                           'Pertemuan ke - ${jadwalMahasiswaResponseModel.data[index].pertemuan}',
                                           style: TextStyle(
                                             fontSize: 14,
-                                            fontFamily: 'WorkSansMedium',
+                                            fontFamily: 'OpenSans',
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -356,8 +369,7 @@ class _MahasiswaJadwalDashboardPageState
                                                     style: TextStyle(
                                                       color: Colors.grey[50],
                                                       fontSize: 14,
-                                                      fontFamily:
-                                                          'WorkSansMedium',
+                                                      fontFamily: 'OpenSans',
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
@@ -383,8 +395,7 @@ class _MahasiswaJadwalDashboardPageState
                                                     style: TextStyle(
                                                       color: Colors.grey[50],
                                                       fontSize: 14,
-                                                      fontFamily:
-                                                          'WorkSansMedium',
+                                                      fontFamily: 'OpenSans',
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
@@ -409,8 +420,7 @@ class _MahasiswaJadwalDashboardPageState
                                                     style: TextStyle(
                                                       color: Colors.grey[50],
                                                       fontSize: 14,
-                                                      fontFamily:
-                                                          'WorkSansMedium',
+                                                      fontFamily: 'OpenSans',
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
@@ -424,7 +434,7 @@ class _MahasiswaJadwalDashboardPageState
                                           title: Text(
                                             'Lihat lebih detail',
                                             style: TextStyle(
-                                                fontFamily: 'WorkSansMedium',
+                                                fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14),
                                           ),
@@ -443,7 +453,7 @@ class _MahasiswaJadwalDashboardPageState
                                                         'Dosen Pengampu : ${jadwalMahasiswaResponseModel.data[index].namadosen1}',
                                                         style: TextStyle(
                                                             fontFamily:
-                                                                'WorkSansMedium',
+                                                                'OpenSans',
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontSize: 14),
@@ -461,8 +471,7 @@ class _MahasiswaJadwalDashboardPageState
                                                   child: Text(
                                                     'Ruang : ${jadwalMahasiswaResponseModel.data[index].ruang}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -478,8 +487,7 @@ class _MahasiswaJadwalDashboardPageState
                                                   child: Text(
                                                     'SKS : ${jadwalMahasiswaResponseModel.data[index].sks}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -495,8 +503,7 @@ class _MahasiswaJadwalDashboardPageState
                                                   child: Text(
                                                     'Jam Kelas : ${jadwalMahasiswaResponseModel.data[index].jammasuk} - ${jadwalMahasiswaResponseModel.data[index].jamkeluar}',
                                                     style: TextStyle(
-                                                        fontFamily:
-                                                            'WorkSansMedium',
+                                                        fontFamily: 'OpenSans',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 14),
@@ -531,7 +538,7 @@ class _MahasiswaJadwalDashboardPageState
                                                         'Tampil Peserta Kelas',
                                                         style: const TextStyle(
                                                             fontFamily:
-                                                                'WorkSansSemiBold',
+                                                                'OpenSans',
                                                             fontSize: 16,
                                                             color:
                                                                 Colors.white),

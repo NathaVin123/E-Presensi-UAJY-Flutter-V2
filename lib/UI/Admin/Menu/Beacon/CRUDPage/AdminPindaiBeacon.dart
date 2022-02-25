@@ -209,16 +209,17 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.grey[50],
         appBar: AppBar(
+          foregroundColor: Colors.black,
           elevation: 0,
-          backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+          backgroundColor: Colors.blue[100],
           centerTitle: false,
           title: Text(
             'Pindai Beacon',
             style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'WorkSansMedium',
+                color: Colors.black,
+                fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold),
           ),
           actions: <Widget>[
@@ -305,7 +306,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                   Text('Sedang Memindai ...',
                                       style: TextStyle(
                                           fontSize: 16.0,
-                                          fontFamily: 'WorkSansMedium',
+                                          fontFamily: 'OpenSans',
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white))
                                 ],
@@ -320,7 +321,15 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                           padding: EdgeInsets.all(8),
                                           child: Container(
                                               decoration: BoxDecoration(
-                                                  color: Colors.grey[200],
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.grey[500],
+                                                        offset:
+                                                            Offset(0.0, 0.0),
+                                                        blurRadius: 0.75,
+                                                        spreadRadius: 0.25)
+                                                  ],
+                                                  color: Colors.white,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           25)),
@@ -359,7 +368,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                                   fontSize:
                                                                       16.0,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold)),
@@ -374,7 +383,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                             style: TextStyle(
                                                               fontSize: 14.0,
                                                               fontFamily:
-                                                                  'WorkSansMedium',
+                                                                  'OpenSans',
                                                             )),
                                                       ),
                                                       Padding(
@@ -393,7 +402,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                                   fontSize:
                                                                       14.0,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                 )),
                                                             Text(
                                                                 'Minor : ${beacon.minor}',
@@ -402,7 +411,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                                   fontSize:
                                                                       14.0,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                 )),
                                                           ],
                                                         ),
@@ -423,7 +432,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                                   fontSize:
                                                                       14.0,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                 )),
                                                             Text(
                                                                 'Tx Power : ${beacon.txPower}',
@@ -432,7 +441,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                                   fontSize:
                                                                       14.0,
                                                                   fontFamily:
-                                                                      'WorkSansMedium',
+                                                                      'OpenSans',
                                                                 )),
                                                           ],
                                                         ),
@@ -444,27 +453,35 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                                                         child: Container(
                                                           decoration: BoxDecoration(
                                                               color: Colors
-                                                                  .yellow[800],
+                                                                  .blue[500],
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           25)),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Text(
-                                                                'Jarak : ${beacon.accuracy} m',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        22.0,
-                                                                    fontFamily:
-                                                                        'WorkSansMedium',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color: Colors
-                                                                        .white)),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Text(
+                                                                    'Jarak : ${beacon.accuracy} m',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            22.0,
+                                                                        fontFamily:
+                                                                            'OpenSans',
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        color: Colors
+                                                                            .white)),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -488,7 +505,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
                               'Maaf, perangkat iOS belum mendukung fitur pindai beacon',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontFamily: 'WorkSansMedium',
+                                  fontFamily: 'OpenSans',
                                   fontWeight: FontWeight.bold),
                             ),
                           )),
@@ -500,7 +517,7 @@ class _AdminPindaiBeaconState extends State<AdminPindaiBeacon>
               //       'Silahkan pilih beacon untuk menyalin UUID',
               //       style: TextStyle(
               //           color: Colors.white,
-              //           fontFamily: 'WorkSansMedium',
+              //           fontFamily: 'OpenSans',
               //           fontWeight: FontWeight.bold),
               //     ),
               //   ),

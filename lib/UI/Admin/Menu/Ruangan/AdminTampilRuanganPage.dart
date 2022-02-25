@@ -50,13 +50,14 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
         centerTitle: true,
         title: Text(
-          'Tampil Perangkat Ruangan',
+          'Tampil Ruangan',
           style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontFamily: 'WorkSansMedium',
               fontWeight: FontWeight.bold),
         ),
@@ -94,7 +95,14 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Segarkan',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'OpenSans',
+                color: Colors.black)),
+        backgroundColor: Colors.blue[200],
+        icon: Icon(Icons.refresh_rounded, color: Colors.black),
         onPressed: () => {
           getListDetailRuangan(),
           Fluttertoast.showToast(
@@ -106,10 +114,9 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
               textColor: Colors.white,
               fontSize: 14.0)
         },
-        child: Icon(Icons.refresh_rounded),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-      backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+      backgroundColor: Colors.grey[50],
       body: listDetailRuanganResponseModel.data == null
           ? Container(
               child: Padding(
@@ -119,7 +126,7 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircularProgressIndicator(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       SizedBox(
                         height: 20,
@@ -130,7 +137,7 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                             fontSize: 15,
                             fontFamily: 'WorkSansMedium',
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                     ],
                   ),
@@ -150,7 +157,7 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(25)),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 'Ruangan Kosong',
                                 style: TextStyle(
@@ -169,15 +176,23 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
               : Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.grey[200],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500],
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.75,
+                                  spreadRadius: 0.25)
+                            ],
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: TextFormField(
                             decoration: InputDecoration(
+                              icon: Icon(Icons.search),
                               hintText: 'Cari Ruangan',
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -214,17 +229,24 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                                     left: 12, right: 12, top: 8, bottom: 8),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.grey[200],
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey[500],
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.75,
+                                            spreadRadius: 0.25)
+                                      ],
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(25)),
                                   child: new ListTile(
                                     title: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(4.0),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               'Ruang ${ruanganListSearch[index].ruang}',
                                               style: TextStyle(
@@ -234,7 +256,7 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               'Fakultas ${ruanganListSearch[index].fakultas}',
                                               style: TextStyle(
@@ -244,7 +266,7 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               'Prodi ${ruanganListSearch[index].prodi}',
                                               style: TextStyle(
@@ -253,26 +275,37 @@ class _AdminTampilRuanganPageState extends State<AdminTampilRuanganPage> {
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: new Text(
-                                              'Nama Device : ${ruanganListSearch[index].namadevice}',
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: 'WorkSansMedium',
-                                                fontWeight: FontWeight.bold,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: new Text(
+                                                  'Device : ${ruanganListSearch[index].namadevice}',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        'WorkSansMedium',
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: new Text(
-                                              'Jarak Minimal :  ${ruanganListSearch[index].jarak} m',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontFamily: 'WorkSansMedium',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: new Text(
+                                                  'Jarak Minimal :  ${ruanganListSearch[index].jarak} m',
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontFamily:
+                                                          'WorkSansMedium',
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),

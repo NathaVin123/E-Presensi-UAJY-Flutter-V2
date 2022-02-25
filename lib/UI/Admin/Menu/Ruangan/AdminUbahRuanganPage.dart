@@ -51,14 +51,15 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         elevation: 0,
-        backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+        backgroundColor: Colors.blue[100],
         centerTitle: true,
         title: Text(
-          'Ubah Perangkat Ruangan',
+          'Pilih Ruangan',
           style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'WorkSansMedium',
+              color: Colors.black,
+              fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -95,7 +96,13 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.blue[200],
+        label: Text('Segarkan',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'OpenSans',
+                color: Colors.black)),
         onPressed: () => {
           getListRuangan(),
           Fluttertoast.showToast(
@@ -107,10 +114,13 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
               textColor: Colors.white,
               fontSize: 14.0)
         },
-        child: Icon(Icons.refresh_rounded),
+        icon: Icon(
+          Icons.refresh_rounded,
+          color: Colors.black,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-      backgroundColor: Color.fromRGBO(23, 75, 137, 1),
+      backgroundColor: Colors.grey[50],
       body: listRuanganResponseModel.data == null
           ? Container(
               child: Padding(
@@ -120,7 +130,7 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircularProgressIndicator(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       SizedBox(
                         height: 20,
@@ -129,9 +139,9 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
                         'Mohon Tunggu..',
                         style: TextStyle(
                             fontSize: 15,
-                            fontFamily: 'WorkSansMedium',
+                            fontFamily: 'OpenSans',
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                     ],
                   ),
@@ -151,12 +161,12 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(25)),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 'Ruangan Kosong',
                                 style: TextStyle(
                                     fontSize: 18,
-                                    fontFamily: 'WorkSansMedium',
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
@@ -170,15 +180,23 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
               : Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.grey[200],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500],
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.75,
+                                  spreadRadius: 0.25)
+                            ],
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: TextFormField(
                             decoration: InputDecoration(
+                              icon: Icon(Icons.search),
                               hintText: 'Cari Ruangan',
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -187,7 +205,7 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
                               disabledBorder: InputBorder.none,
                             ),
                             style: const TextStyle(
-                                fontFamily: 'WorkSansSemiBold',
+                                fontFamily: 'OpenSans',
                                 fontSize: 16.0,
                                 color: Colors.black),
                             onChanged: (text) {
@@ -215,58 +233,80 @@ class _AdminRuanganPageState extends State<AdminRuanganPage> {
                                     left: 12, right: 12, top: 8, bottom: 8),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.grey[200],
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey[500],
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.75,
+                                            spreadRadius: 0.25)
+                                      ],
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(25)),
                                   child: new ListTile(
                                     title: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(4.0),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               'Ruang ${ruanganListSearch[index].ruang}',
                                               style: TextStyle(
                                                   fontSize: 18,
-                                                  fontFamily: 'WorkSansMedium',
+                                                  fontFamily: 'OpenSans',
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               'Fakultas ${ruanganListSearch[index].fakultas}',
                                               style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'WorkSansMedium',
+                                                fontSize: 14,
+                                                fontFamily: 'OpenSans',
                                               ),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: new Text(
                                               'Prodi ${ruanganListSearch[index].prodi}',
                                               style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'WorkSansMedium',
+                                                fontSize: 14,
+                                                fontFamily: 'OpenSans',
                                               ),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             child: MaterialButton(
-                                                color: Colors.yellow[800],
+                                                color: Colors.blue[500],
                                                 shape: StadiumBorder(),
                                                 padding: EdgeInsets.all(15),
-                                                child: Text(
-                                                  "Ubah Perangkat",
-                                                  style: const TextStyle(
-                                                      fontFamily:
-                                                          'WorkSansSemiBold',
-                                                      fontSize: 14.0,
-                                                      color: Colors.white),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.edit,
+                                                      color: Colors.white,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    Text(
+                                                      "Ubah Perangkat Beacon",
+                                                      style: const TextStyle(
+                                                          fontFamily:
+                                                              'OpenSans',
+                                                          fontSize: 14.0,
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ],
                                                 ),
                                                 onPressed: () async {
                                                   Get.toNamed(

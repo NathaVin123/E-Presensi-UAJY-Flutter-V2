@@ -51,109 +51,125 @@ class _DosenInformasiAkunPageState extends State<DosenInformasiAkunPage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(22),
-                    child: Initicon(
-                      text: namadsn,
-                      backgroundColor: Colors.grey[400],
-                      size: 80,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Center(
-                        child: Column(
-                      children: <Widget>[
-                        Text('Nama Dosen',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'ProductSansRegular',
-                                fontSize: 22)),
-                        SizedBox(
-                          height: 5,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[500],
+                  offset: Offset(0.0, 0.0),
+                  blurRadius: 0.75,
+                  spreadRadius: 0.25)
+            ], color: Colors.white, borderRadius: BorderRadius.circular(25)),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(22),
+                        child: Initicon(
+                          text: namadsn,
+                          backgroundColor: Colors.grey[400],
+                          size: 80,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Scrollbar(
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Text(namadsn,
-                                  style: TextStyle(
-                                      fontFamily: 'ProductSansRegular',
-                                      fontSize: 18)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Center(
+                            child: Column(
+                          children: <Widget>[
+                            Text('Nama Dosen',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'ProductSansRegular',
+                                    fontSize: 22)),
+                            SizedBox(
+                              height: 5,
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        Text(
-                          'NPP',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'ProductSansRegular',
-                              fontSize: 22),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          npp,
-                          style: TextStyle(
-                              fontFamily: 'ProductSansRegular', fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        Text(
-                          'Program Studi',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'ProductSansRegular',
-                              fontSize: 22),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          prodi,
-                          style: TextStyle(
-                              fontFamily: 'ProductSansRegular', fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        Text(
-                          'Fakultas',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'ProductSansRegular',
-                              fontSize: 22),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          fakultas,
-                          style: TextStyle(
-                              fontFamily: 'ProductSansRegular', fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                      ],
-                    )),
-                  )
-                ],
-              ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Scrollbar(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Text(namadsn,
+                                      style: TextStyle(
+                                          fontFamily: 'ProductSansRegular',
+                                          fontSize: 18)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Text(
+                              'NPP',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSansRegular',
+                                  fontSize: 22),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              npp,
+                              style: TextStyle(
+                                  fontFamily: 'ProductSansRegular',
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Text(
+                              'Program Studi',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSansRegular',
+                                  fontSize: 22),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              prodi,
+                              style: TextStyle(
+                                  fontFamily: 'ProductSansRegular',
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Text(
+                              'Fakultas',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSansRegular',
+                                  fontSize: 22),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              fakultas,
+                              style: TextStyle(
+                                  fontFamily: 'ProductSansRegular',
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                          ],
+                        )),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

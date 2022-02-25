@@ -34,7 +34,7 @@ class ProgressHUD extends StatelessWidget {
               child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: Color.fromRGBO(247, 180, 7, 1),
+                    color: Colors.blue[200],
                     boxShadow: [
                       BoxShadow(
                           color: Theme.of(context).hintColor.withOpacity(0.2),
@@ -45,7 +45,7 @@ class ProgressHUD extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(15),
                     child: CircularProgressIndicator(
-                        backgroundColor: Color.fromRGBO(247, 180, 7, 1),
+                        backgroundColor: Colors.blue[200],
                         valueColor:
                             AlwaysStoppedAnimation<Color>(Colors.white)),
                   )),
